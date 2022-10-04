@@ -11,7 +11,7 @@
 
 This is a simple user interface that allows users to search for detailed property information from buildings in Allegheny County. 
 
-![](https://github.com/juctaposed/aps/blob/main/APSgiphy.gif)
+![](https://github.com/juctaposed/aps/blob/main/APSv1Giphy.gif)
 
 ## Optimizations
 
