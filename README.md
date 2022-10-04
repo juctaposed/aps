@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/juctaposed/allegheny-county-search/blob/main/public/imgs/logo/profile.png" alt="logo" align="center" width="225" height="225"/>
+<img src="https://github.com/juctaposed/aps/blob/main/public/imgs/navlogo/default.png" alt="logo" align="center" width="225" height="225"/>
 </p>
 
 <div align="center">
