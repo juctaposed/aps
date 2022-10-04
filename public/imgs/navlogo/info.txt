@@ -1,0 +1,14 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: ResagokrBold
+font link: http://www.glukfonts.pl/font.php?font=Resagokr
+font author: GLUK fonts
+font author site: http://www.glukfonts.pl/
+
+
+icon designer: Sergey Patutin
+icon designer link: /bdesign.by
+        
+{"bg-gradient-0":"#007DE8","bg-gradient-1":"#A1C3DB","font":"#ffffff","icon":"#ffffff","slogan":"#ffffff"}
+      
