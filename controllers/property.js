@@ -19,7 +19,7 @@ module.exports  = {
           return err
           // console.log(err);
         } else {
-          console.log(`parcel returned`, parcels)
+            console.log(`parcel returned`, parcels)
             const record = await PropertyModel.create({
             ownerName: parcels.ownerName, 
             address: parcels.address,

@@ -74,21 +74,14 @@ body{
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-/* .fa-home {
-    width: 16.5rem;
-    height: 1.5rem;
-} */
-
 .footer {
     font-size:small
 }
 
-/* .profile-body {
-    display: flex;
-    justify-content: center;
-} */
-
-
+.footer.p-10.bg-base-200.text-base-content {
+    /* border: 5px solid black; */
+    /* margin: 13.5% 0 0 0; */
+}
 
 @media (max-width: 767px) {
     #propSearch{
@@ -96,18 +89,8 @@ body{
         justify-content: center;
         align-items: center
     }
-    /* .fas.fa-home.me-3.text-secondary {
-        text-align: center;
-    } */
 }
 
-/* header  */
 .container {
-    padding-bottom:40px
+    padding-bottom:13.5%;
 }
-
-/* y does this stretch instead of moving? */
-/* .modal-button {
-    display: flex;
-    justify-content: flex-end;
-} */
