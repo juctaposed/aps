@@ -50,8 +50,7 @@ When planning out how I wanted to eventually manipulate data for visuals, I stum
 - Create a `.env` file in config folder and add the following as `key = value`
   - PORT = 2121 (can be any port example: 3000)
   - DB_STRING = `your database URI`
-  
- If running locally, you may need the following for authentication:
+  If running locally, you may need the following for authentication:
   - GOOGLE_CLIENT_ID = `your google client ID`
   - GOOGLE_CLIENT_SECRET = `your google client secret`
 ---
