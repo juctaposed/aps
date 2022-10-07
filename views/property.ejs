@@ -53,23 +53,23 @@
         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= property.salePrice %></dd>
       </div>
       <!-- First stat table -->
-      <div class="stats shadow">
+      <div class="stats stats-vertical lg:stats-horizontal shadow">
   
         <div class="stat">
-          <div class="stat-title">Land Value</div>
-          <div class="stat-value"><%= property.fullMarketValues.this_year.landValue %></div>
+          <div class="stat-title">Land Market Value</div>
+          <div class="stat-value">$<%= property.fullMarketValues.this_year.landValue %></div>
           <div class="stat-desc">2022</div>
         </div>
         
         <div class="stat">
-          <div class="stat-title">Building Value</div>
-          <div class="stat-value"><%= property.fullMarketValues.this_year.buildingValue %></div>
+          <div class="stat-title">Building Market Value</div>
+          <div class="stat-value">$<%= property.fullMarketValues.this_year.buildingValue %></div>
           <div class="stat-desc">2022</div>
         </div>
         
         <div class="stat">
-          <div class="stat-title">Total Value</div>
-          <div class="stat-value text-secondary"><%= property.fullMarketValues.this_year.totalValue %></div>
+          <div class="stat-title">Total Market Value</div>
+          <div class="stat-value text-secondary">$<%= property.fullMarketValues.this_year.totalValue %></div>
           <div class="stat-desc text-secondary">2022</div>
         </div>
         
