@@ -23,13 +23,16 @@ module.exports  = {
             const record = await PropertyModel.create({
             ownerName: parcels.ownerName, 
             address: parcels.address,
+            ownerCode: parcels.ownerCode,
             parcelId: parcels.parcelId,
             municipality: parcels.municipality,
             school: parcels.school,
             recordingDate: parcels.recordingDate,
             lotArea: parcels.lotArea,
+            salePrice: parcels.salePrice,
+            fullMarketValues: parcels.fullMarketValues,
             dateSearched: req.body.id, 
-            searchedBy: req.user.id
+            searchedBy: req.user.id,
           });
           console.log("parcels for ${address}");
           console.log(record.address)
