@@ -3,24 +3,24 @@ const mongoose = require("mongoose");
 const MarketValueModel = new mongoose.Schema({
   this_year: {
     landValue: {
-      type: String
+      type: Number
     },
     buildingValue: {
-      type: String
+      type: Number
     },
     totalValue: {
-      type: String
+      type: Number
     },
   },
   last_year: {
     landValue: {
-      type: String
+      type: Number
     },
     buildingValue: {
-      type: String
+      type: Number
     },
     totalValue: {
-      type: String
+      type: Number
     },
   }
 })
