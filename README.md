@@ -24,7 +24,7 @@ I pushed for an MVP that provides basic functionality of displaying useful prope
 
 - Further UI/UX - it's very bare bone currently as the main focus up to this point was on functionality. In particular, I'll be working on themes for better contrast and setting better content decisions for mobile users. 
 
-- Currently when completing the form to search for a property, strings such as "Street", "Road", or any synonyms thereof must be left off. E.g.
+- Currently when completing the form to search for a property, substrings such as "Street", "Road", or any synonyms thereof must be left off. E.g.
 
 `1000 Liberty Avenue`
 would be 
