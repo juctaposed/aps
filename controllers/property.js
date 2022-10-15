@@ -14,66 +14,34 @@ module.exports  = {
   searchProperty: async (req, res) => {
     try {
       console.log(req.body)
-      acreApi.search(Number(req.body.streetNum), req.body.street.trim(), async function(err, parcels) {
+      acreApi.search(Number(req.body.streetNum), req.body.street.trim(), async function(err, property) {
         if(err) {
           return err
           // console.log(err);
         } else {
-            console.log(`parcel returned`, parcels)
+            console.log(`property returned`, property)
             const record = await PropertyModel.create({
-            ownerName: parcels.ownerName, 
-            address: parcels.address,
-            ownerCode: parcels.ownerCode,
-            parcelId: parcels.parcelId,
-            municipality: parcels.municipality,
-            school: parcels.school,
-            recordingDate: parcels.recordingDate,
-            lotArea: parcels.lotArea,
-            salePrice: parcels.salePrice,
-            fullMarketValues: parcels.fullMarketValues,
+            ownerName: property.ownerName, 
+            address: property.address,
+            ownerCode: property.ownerCode,
+            parcelId: property.parcelId,
+            municipality: property.municipality,
+            school: property.school,
+            recordingDate: property.recordingDate,
+            lotArea: property.lotArea,
+            salePrice: property.salePrice,
+            fullMarketValues: property.fullMarketValues,
             dateSearched: req.body.id, 
             searchedBy: req.user.id,
           });
-          console.log("parcels for ${address}");
           console.log(record.address)
-          // res.redirect("/property/:id");
           res.render("property", { property: record });
-          // console.log(parcels);
+          // console.log(property);
         }
       });
     } catch (err) {
       console.log(err);
     }
   },
-
-  // searchProperty: async (req, res) => {
-  //   try {
-  //     let streetNum = req.body.streetNum
-  //     let street = req.body.street
-  //     const parcels = await acreApi.street.street(streetNum, street, function(err, parcels) {
-  //       if(err) {
-  //         console.log(err);
-  //       } else {
-  //         console.log(parcels);
-  //       }
-  //     });
-  //     await Property.create({
-  //       owner: parcels.ownerName, ///duno if parcels. or req.body yet
-  //       address: parcels.address,
-  //       parcelId: parcels.parcelId,
-  //       municipality: parcels.municipality,
-  //       schoolDistrict: parcels.school,
-  //       deedRecording: parcels.recordingDate,
-  //       lotArea: parcels.lotArea,
-  //       user: req.user.id, ///dont need this?
-  //     });
-  //     console.log("parcelss for ${address}");
-  //     // res.redirect("/property/:id");
-  //     res.render("property.ejs", { address: address, parcelId: req.user.parcelId });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
-
 }
 
