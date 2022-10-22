@@ -6,6 +6,18 @@ const ParcelModel = require("./models/Parcel");
 const { parcel } = require('acre-api');
 
 
+var muniIndex = acreApi.municipality.all();
+console.log(muniIndex);
+
+// TAX EXAMPLE
+// acreApi.parcel.taxInfo('0084-N-00285-0000-00', function(err, parcel) {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(parcel);
+// 	}
+// });
+
 
 // async function addParcel() {
 //     for (let i = 0; i < 5; i++){
@@ -21,24 +33,24 @@ const { parcel } = require('acre-api');
 // addParcel()
 
 
-async function addParcel() {
-	for (let i = 0; i < 5; i++) {
-		try{
-			const records = await acreApi.parcel.generalInfo(
-				parcelRecords, function(err, parcel) {
-					if(err) {
-						return err;
-					} else {
-						return parcel;
-					}
-				});
-			console.log(records,'','\t')
-		} catch (error){
-			console.log(error.message)
-		}
-	}
-}
-addParcel()
+// async function addParcel() {
+// 	for (let i = 0; i < 5; i++) {
+// 		try{
+// 			const records = await acreApi.parcel.generalInfo(
+// 				parcelRecords, function(err, parcel) {
+// 					if(err) {
+// 						return err;
+// 					} else {
+// 						return parcel;
+// 					}
+// 				});
+// 			console.log(records,'','\t')
+// 		} catch (error){
+// 			console.log(error.message)
+// 		}
+// 	}
+// }
+// addParcel()
 
 // acreApi.parcel.generalInfo(record, function(err, parcel) {
 	
