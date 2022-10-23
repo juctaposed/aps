@@ -14,66 +14,64 @@
 
 <!-- Tailwind CSS v2.0+ layout -->
 <div class="container overflow-hidden bg-white shadow sm:rounded-lg">
-  <div class="px-4 py-5 sm:px-6">
-    <h3 class="text-lg font-medium leading-6 text-gray-900">Property Information for <%= property.address %></h3>
-    <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
-  </div>
-  <div class="border-t border-gray-200">
-    <dl>
-      <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-500">Owner Name</dt>
-        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.ownerName %></dd>
-      </div>
-      <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-500">Owner Type</dt>
-        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.ownerCode %></dd>
-      </div>
-      <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-500">Parcel ID</dt>
-        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.parcelId %></dd>
-      </div>
-      <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-500">School District</dt>
-        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.school %></dd>
-      </div>
-      <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-500">Municipality</dt>
-        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.municipality %></dd>
-      </div>
-      <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-500">Deed Recorded on</dt>
-        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.recordingDate %></dd>
-      </div>
-      <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-500">Lot Area</dt>
-        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.lotArea %></dd>
-      </div>
-      <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-500">Last Sales Price</dt>
-        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= property.salePrice %></dd>
-      </div>
-      <!-- First stat table -->
-      <div class="stats stats-vertical lg:stats-horizontal shadow">
-  
-        <div class="stat">
-          <div class="stat-title">Land Market Value</div>
-          <div class="stat-value">$<%= property.fullMarketValues.this_year.landValue %></div>
-          <div class="stat-desc">2022</div>
+  <div class="property-container">
+    <div class="px-4 py-5 sm:px-6">
+      <h3 class="text-lg font-medium leading-6 text-gray-900">Property Information for <%= property.address %></h3>
+      <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
+    </div>
+    <div class="border-t border-gray-200">
+      <dl>
+        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Owner Name</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.ownerName %></dd>
         </div>
-        
-        <div class="stat">
-          <div class="stat-title">Building Market Value</div>
-          <div class="stat-value">$<%= property.fullMarketValues.this_year.buildingValue %></div>
-          <div class="stat-desc">2022</div>
+        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Owner Type</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.ownerCode %></dd>
         </div>
-        
-        <div class="stat">
-          <div class="stat-title">Total Market Value</div>
-          <div class="stat-value text-secondary">$<%= property.fullMarketValues.this_year.totalValue %></div>
-          <div class="stat-desc text-secondary">2022</div>
+        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Parcel ID</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.parcelId %></dd>
         </div>
-        
+        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">School District</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.school %></dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Municipality</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.municipality %></dd>
+        </div>
+        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Deed Recorded on</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.recordingDate %></dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Lot Area</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.lotArea %></dd>
+        </div>
+        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Last Sales Price</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= property.salePrice %></dd>
+        </div>
       </div>
+    <!-- First stat table -->
+    <div class="stats stats-vertical lg:stats-horizontal shadow">
+      <div class="stat">
+        <div class="land-market">Land Market Value</div>
+        <div class="stat-value">$<%= property.fullMarketValues.this_year.landValue %></div>
+        <div class="stat-desc">2022</div>
+      </div>
+      <div class="stat">
+        <div class="bldg-market">Building Market Value</div>
+        <div class="stat-value">$<%= property.fullMarketValues.this_year.buildingValue %></div>
+        <div class="stat-desc">2022</div>
+      </div>
+      <div class="stat">
+        <div class="total-market">Total Market Value</div>
+        <div class="stat-value text-secondary">$<%= property.fullMarketValues.this_year.totalValue %></div>
+        <div class="stat-desc text-secondary">2022</div>
+      </div>
+    </div>
       <!-- Second stat table -->
       <!-- <div class="stats stats-vertical lg:stats-horizontal shadow">
   

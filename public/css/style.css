@@ -78,10 +78,6 @@ body{
     font-size:small
 }
 
-.footer.p-10.bg-base-200.text-base-content {
-    /* border: 5px solid black; */
-    /* margin: 13.5% 0 0 0; */
-}
 
 @media (max-width: 767px) {
     #propSearch{
@@ -93,4 +89,18 @@ body{
 
 .container {
     padding-bottom:13.5%;
+    display: flex;
+}
+
+.stat {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.stats {
+    width: 20%;
+}
+.property-container{
+    flex: 1;
 }
