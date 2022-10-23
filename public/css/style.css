@@ -89,7 +89,7 @@ body{
 
 .container {
     padding-bottom:13.5%;
-    display: flex;
+    /* display: flex; */
 }
 
 .stat {
