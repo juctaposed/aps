@@ -1,7 +1,6 @@
 <p align="center">
-<img src="https://github.com/juctaposed/aps/blob/main/public/imgs/navlogo/default.png" alt="logo" align="center" width="225" height="225"/>
+<img src="https://github.com/juctaposed/aps/blob/main/public/imgs/frame6.svg" alt="logo" align="center" width="225" height="225"/>
 </p>
-
 <div align="center">
 
 # Allegheny Property Search
@@ -12,7 +11,7 @@
 This is a simple user interface that allows users to search for detailed property information from buildings in Allegheny County. 
 
 **Website:** http://allegheny-property-search.herokuapp.com/
-![](https://github.com/juctaposed/aps/blob/main/APSv1Giphy.gif)
+![](https://github.com/juctaposed/aps/blob/main/public/imgs/apsDemoGif.gif)
 
 ## Optimizations
 
