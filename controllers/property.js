@@ -38,6 +38,34 @@ module.exports  = {
           res.render("property", { property: record });
           // console.log(property);
         }
+        acreApi.parcel.buildingInfo(`${property.parcelId}`, function(err, parcel) {
+          if(err) {
+            console.log(err);
+          } else {
+            console.log(parcel);
+          }
+        });
+        acreApi.parcel.taxInfo(`${property.parcelId}`, function(err, parcel) {
+          if(err) {
+            console.log(err);
+          } else {
+            console.log(parcel);
+          }
+        });
+        acreApi.parcel.ownerHistory(`${property.parcelId}`, function(err, parcel) {
+          if(err) {
+            console.log(err);
+          } else {
+            console.log(parcel);
+          }
+        });
+        acreApi.parcel.comps(`${property.parcelId}`, function(err, parcel) {
+          if(err) {
+            console.log(err);
+          } else {
+            console.log(parcel);
+          }
+        });
       });
     } catch (err) {
       console.log(err);
