@@ -1,16 +1,5 @@
 <%- include('partials/header') -%>
 
-<!-- Original Layout -->
-<!-- <div class="container">
-    <div class="row">
-      <div id="parcel"class="col">Parcel: <%= property.parcelId %></div>
-      <div id="address"class="col">Address: <%= property.address %></div>
-      <div class="col">Owner: <%= property.ownerName %></div>
-      <div class="col">School: <%= property.school %></div>
-      <div class="col">Municipality: <%= property.municipality %></div>
-      <div class="col">Image: <%= property.image %></div>
-    </div>
-  </div> -->
 
 <!-- Tailwind CSS v2.0+ layout -->
 <div class="container overflow-hidden bg-white shadow sm:rounded-lg">
@@ -72,63 +61,84 @@
         <div class="stat-desc text-secondary">2022</div>
       </div>
     </div>
+
       <!-- Second stat table -->
       <!-- <div class="stats stats-vertical lg:stats-horizontal shadow">
   
         <div class="stat">
           <div class="stat-title">Land Market Value</div>
-          <div class="stat-value">$<%= property.fullMarketValues.this_year.landValue %></div>
+          <div class="stat-value">$<%= property.fullMarketValues.last_year.landValue %></div>
           <div class="stat-desc">2022</div>
         </div>
         
         <div class="stat">
           <div class="stat-title">Building Market Value</div>
-          <div class="stat-value">$<%= property.fullMarketValues.this_year.buildingValue %></div>
+          <div class="stat-value">$<%= property.fullMarketValues.last_year.buildingValue %></div>
           <div class="stat-desc">2022</div>
         </div>
         
         <div class="stat">
           <div class="stat-title">Total Market Value</div>
-          <div class="stat-value text-secondary">$<%= property.fullMarketValues.this_year.totalValue %></div>
+          <div class="stat-value text-secondary">$<%= property.fullMarketValues.last_year.totalValue %></div>
           <div class="stat-desc text-secondary">2022</div>
         </div>
         
       </div> -->
       <!-- End second stats table -->
 
-      <!-- <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-sm font-medium text-gray-500">Attachments</dt>
-        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-          <ul role="list" class="divide-y divide-gray-200 rounded-md border border-gray-200">
-            <li class="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
-              <div class="flex w-0 flex-1 items-center">
-                <svg class="h-5 w-5 flex-shrink-0 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-                </svg>
-                <span class="ml-2 w-0 flex-1 truncate">resume_back_end_developer.pdf</span>
-              </div>
-              <div class="ml-4 flex-shrink-0">
-                <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
-              </div>
-            </li>
-            <li class="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
-              <div class="flex w-0 flex-1 items-center">
-                <svg class="h-5 w-5 flex-shrink-0 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-                </svg>
-                <span class="ml-2 w-0 flex-1 truncate">coverletter_back_end_developer.pdf</span>
-              </div>
-              <div class="ml-4 flex-shrink-0">
-                <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
-              </div>
-            </li>
-          </ul>
-        </dd>
-      </div> -->
 
-      <!-- The button to open modal -->
-      <label for="my-modal-4" class="btn modal-button">Request Features</label>
+    </dl>
+          <!-- Building Info Modal -->
+          <label for="my-modal-5" class="btn btn-outline">Building Info </label>
+          <input type="checkbox" id="my-modal-5" class="modal-toggle" />
+          <label for="my-modal-5" class="modal cursor-pointer">
+            <label class="modal-box relative" for="">
+              <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">x</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
+              </div>
+              <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">x</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
+              </div>
+              <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">x</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
+              </div>
+              <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">x</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
+              </div>
+            </label>
+          </label>
 
+          <label for="my-modal-6" class="btn btn-outline">Tax Info </label>
+          <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+          <label for="my-modal-6" class="modal cursor-pointer">
+          </label>
+
+          <label for="my-modal-7" class="btn btn-outline">Owner Info </label>
+          <input type="checkbox" id="my-modal-7" class="modal-toggle" />
+          <label for="my-modal-7" class="modal cursor-pointer">
+          </label>
+
+          <label for="my-modal-8" class="btn btn-outline">Comparable Properties </label>
+          <input type="checkbox" id="my-modal-8" class="modal-toggle" />
+          <label for="my-modal-8" class="modal cursor-pointer">
+          </label>
+
+          <!-- Put this part before </body> tag -->
+          <!-- IF USING PAGINATION -->
+          <!-- <div class="btn-group grid grid-cols-2"> -->
+            <!-- <a href="building" class="btn btn-outline" a href="building.ejs">Building Info</a> -->
+            <!-- <button class="btn btn-outline">Building Info</button>
+            <button class="btn btn-outline">Owner Info</button>
+            <button class="btn btn-outline">Tax Info </button>
+            <button class="btn btn-outline">Comparable Properties</button>
+          </div> -->
+
+      <!-- Additional features -->
+      </br> <label for="my-modal-4" class="btn modal-button">Request Features</label>
     <!-- Put this part before </body> tag -->
       <input type="checkbox" id="my-modal-4" class="modal-toggle" />
       <label for="my-modal-4" class="modal cursor-pointer">
@@ -138,7 +148,7 @@
           <p class="py-4 fas fa-envelope me-3 text-secondary"> westPAsearch@gmail.com</p>
         </label>
       </label>
-    </dl>
+    <!-- </dl> -->
   </div>
 </div>
 

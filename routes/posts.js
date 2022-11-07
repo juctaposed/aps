@@ -5,12 +5,6 @@ const postsController = require("../controllers/posts");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Post Routes - simplified for now
-router.get("/:id", ensureAuth, postsController.getPost);
-//Upload middleware for multer (between our route and controller)  upload.single("file"),
-// router.post("/createPost", postsController.createPost);
-
-router.put("/likePost/:id", postsController.likePost);
-
-router.delete("/deletePost/:id", postsController.deletePost);
+// router.get("/:id", ensureAuth, postsController.getPost);
 
 module.exports = router;

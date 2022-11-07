@@ -1,10 +1,8 @@
 const PropertyModel = require("../models/Property");
-const express = require("express");
+const BuildingModel = require("../models/Building");
+// const express = require("express");
 const acreApi = require('acre-api');
-// const callAcre = require('./lib/Api')
-// const Connections = require('./lib/Connections')
-// const Parser = require('./lib/Parser')
-// const State = require('./lib/State')
+
 
 
 module.exports  = {
@@ -38,32 +36,51 @@ module.exports  = {
           res.render("property", { property: record });
           // console.log(property);
         }
-        acreApi.parcel.buildingInfo(`${property.parcelId}`, function(err, parcel) {
+        acreApi.parcel.buildingInfo(`${property.parcelId}`, async function(err, building) {
           if(err) {
             console.log(err);
+            return err
           } else {
-            console.log(parcel);
+            console.log(`building info`, building);
+            const buildingRecord = await BuildingModel.create({
+              useType: building.useType,
+              totalRooms: building.totalRooms,
+              basement: building.basement,
+              style: building.style,
+              bedrooms: building.bedrooms,
+              stories: building.stories,
+              grade: building.grade,
+              fullBaths: building.fullBaths,
+              halfBaths: building.halfBaths,
+              fireplaces: building.fireplaces,
+              exterior: building.exterior,
+              roof: building.roof,
+              cooling: building.cooling,
+              livableSquareFeet: building.livableSquareFeet
+
+            }) 
+            res.render("property", { building: buildingRecord });
           }
         });
         acreApi.parcel.taxInfo(`${property.parcelId}`, function(err, parcel) {
           if(err) {
             console.log(err);
           } else {
-            console.log(parcel);
+            console.log(`tax info`, parcel);
           }
         });
         acreApi.parcel.ownerHistory(`${property.parcelId}`, function(err, parcel) {
           if(err) {
             console.log(err);
           } else {
-            console.log(parcel);
+            console.log(`owner info`, parcel);
           }
         });
         acreApi.parcel.comps(`${property.parcelId}`, function(err, parcel) {
           if(err) {
             console.log(err);
           } else {
-            console.log(parcel);
+            console.log(`comps info`, parcel);
           }
         });
       });
@@ -71,5 +88,5 @@ module.exports  = {
       console.log(err);
     }
   },
-}
+};
 
