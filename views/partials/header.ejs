@@ -40,7 +40,7 @@
           <img src="/imgs/apsNewLogo1.svg" class="nav-logo" width="190px" alt="logo">
         </a> -->
           <!-- <a class="btn btn-ghost normal-case text-xl" href="/">Property Search</a> -->
-      </div>
+      <!-- </div> -->
       <!-- Navbar -->
     
       <div class="navbar bg-base-100">
@@ -50,7 +50,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a>About</a></li>
+              <li><a href="http://localhost:2121/about">About</a></li>
               <li tabindex="0">
                 <a class="justify-between">
                   Services
@@ -61,7 +61,7 @@
                   <li><a>Individual</a></li>
                 </ul>
               </li>
-              <li><a>Item 3</a></li>
+              <li><a href="http://localhost:2121/contact">Contact Us</a></li>
             </ul>
           </div>
           <a href="/">
@@ -71,7 +71,8 @@
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal p-0">
-            <li><a>About</a></li>
+            <!-- Use absolute links so that no matter where the user clicks on from nav they go to this URL. Relative would be /about -->
+            <li><a href="http://localhost:2121/about">About</a></li>
             <li tabindex="0">
               <a>
                 Services
@@ -82,11 +83,15 @@
                 <li><a>Individuals</a></li>
               </ul>
             </li>
-            <li><a href="contact">Contact Us</a></li>
+            <li><a href="http://localhost:2121/contact">Contact Us</a></li>
           </ul>
         </div>
         <div class="navbar-end">
-          <a href="profile" class="btn" data-tip="Log in to Search">Search</a>
+          <a href="http://localhost:2121/profile" class="btn" data-tip="Log in to Search">Search</a>
+          <div id="tooltip-default" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+            Tooltip content
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
         </div>
       </div>
       <!-- Jumbotron -->
