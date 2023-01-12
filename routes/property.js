@@ -5,6 +5,8 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Simple router for now, no liking properties just get viewing info working
 router.post("/search", propertyController.searchProperty);
+router.get("/search", propertyController.getBuildingInfo)
+
 
 //Can just display through modal as opposed to pagination
 // router.get("/building", propertyController.getBuilding)

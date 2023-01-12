@@ -2,10 +2,6 @@ const acreApi = require('acre-api');
 const streetsName = require('./streetNames')
 const parcelRecords = require('./parcels.js')
 
-
-
-
-
 // function loopThruParcel(array) {
 // 	//parcelRecords
 // 	// 
@@ -23,13 +19,13 @@ const parcelRecords = require('./parcels.js')
 
 
 // TAX EXAMPLE
-acreApi.parcel.taxInfo('0084-N-00285-0000-00', function(err, parcel) {
-	if(err) {
-		console.log(err);
-	} else {
-		console.log(parcel);
-	}
-});
+// acreApi.parcel.taxInfo('0084-N-00285-0000-00', function(err, parcel) {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(parcel);
+// 	}
+// });
 
 
 // async function addParcel() {
@@ -75,15 +71,15 @@ acreApi.parcel.taxInfo('0084-N-00285-0000-00', function(err, parcel) {
 // });
 
 
-// acreApi.search(1000, 'Liberty', function(err, parcel) {
+acreApi.search(1000, 'Liberty', function(err, parcel) {
 	
-// 	if(err) {
-// 		console.log(err);
-// 	} else {
-// 		// Logs generalInfo for parcel
-// 		console.log(parcel);
-// 	}
-// });
+	if(err) {
+		console.log(err);
+	} else {
+		// Logs generalInfo for parcel
+		console.log(parcel);
+	}
+});
 
 // searchProperty: async (req, res) => {
 //     try {

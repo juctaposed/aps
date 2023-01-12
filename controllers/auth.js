@@ -11,6 +11,7 @@ exports.getLogin = (req, res) => {
   });
 };
 
+// Local auth
 exports.postLogin = (req, res, next) => {
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))
