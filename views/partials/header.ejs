@@ -34,15 +34,66 @@
 
     <header>
       <!-- Navbar -->
-      <div class="navbar">
+      <!-- <div class="navbar">
         
         <a href="/">
           <img src="/imgs/apsNewLogo1.svg" class="nav-logo" width="190px" alt="logo">
-        </a>
+        </a> -->
           <!-- <a class="btn btn-ghost normal-case text-xl" href="/">Property Search</a> -->
-      </div>
+      <!-- </div> -->
       <!-- Navbar -->
     
+      <div class="navbar bg-base-100">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <label tabindex="0" class="btn btn-ghost lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </label>
+            <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              <li><a href="http://localhost:2121/about">About</a></li>
+              <li tabindex="0">
+                <a class="justify-between">
+                  Services
+                  <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/></svg>
+                </a>
+                <ul class="p-2">
+                  <li><a>Businesses</a></li>
+                  <li><a>Individual</a></li>
+                </ul>
+              </li>
+              <li><a href="http://localhost:2121/contact">Contact Us</a></li>
+            </ul>
+          </div>
+          <a href="/">
+            <img src="/imgs/apsNewLogo1.svg" class="nav-logo" width="190px" alt="logo">
+
+          </a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal p-0">
+            <!-- Use absolute links so that no matter where the user clicks on from nav they go to this URL. Relative would be /about -->
+            <li><a href="http://localhost:2121/about">About</a></li>
+            <li tabindex="0">
+              <a>
+                Services
+                <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+              </a>
+              <ul class="p-2">
+                <li><a>Businesses</a></li>
+                <li><a>Individuals</a></li>
+              </ul>
+            </li>
+            <li><a href="http://localhost:2121/contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end">
+          <a href="http://localhost:2121/profile" class="btn" data-tip="Log in to Search">Search</a>
+          <div id="tooltip-default" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+            Tooltip content
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+        </div>
+      </div>
       <!-- Jumbotron -->
       <!-- <div class="text-center bg-gray-50 text-gray-800 py-4 px-3">
         <h1 class="text-5xl font-bold mt-0 mb-6">A simple way for Western PA to research property details</h1>
@@ -50,12 +101,5 @@
       </div> -->
       <!-- Jumbotron -->
     </header>
-    <!-- Bootstrap header -->
-    <!-- <header class="container">
-      <div class="text-center">
-        <h1 class=""><a href="/profile">Property Search</a></h1>
-        <span>A simple way for Western PA to view property details</span>
-      </div>
-    </header> -->
   </body>
 </html>

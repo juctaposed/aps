@@ -1,15 +1,11 @@
 const PropertyModel = require("../models/Property");
-const express = require("express");
+const BuildingModel = require("../models/Building");
+// const express = require("express");
 const acreApi = require('acre-api');
-// const callAcre = require('./lib/Api')
-// const Connections = require('./lib/Connections')
-// const Parser = require('./lib/Parser')
-// const State = require('./lib/State')
+
 
 
 module.exports  = {
-  
-  
 
   searchProperty: async (req, res) => {
     try {
@@ -36,12 +32,96 @@ module.exports  = {
           });
           console.log(record.address)
           res.render("property", { property: record });
+          // res.locals.record = property
           // console.log(property);
         }
+        // acreApi.parcel.buildingInfo(`${property.parcelId}`, async function(err, building) {
+        //   if(err) {
+        //     console.log(err);
+        //     return err
+        //   } else {
+        //     console.log(`building info`, building);
+        //     const buildingRecord = await BuildingModel.create({
+        //       useType: building.useType,
+        //       totalRooms: building.totalRooms,
+        //       basement: building.basement,
+        //       style: building.style,
+        //       bedrooms: building.bedrooms,
+        //       stories: building.stories,
+        //       grade: building.grade,
+        //       fullBaths: building.fullBaths,
+        //       halfBaths: building.halfBaths,
+        //       fireplaces: building.fireplaces,
+        //       exterior: building.exterior,
+        //       roof: building.roof,
+        //       cooling: building.cooling,
+        //       livableSquareFeet: building.livableSquareFeet
+
+        //     }) 
+        //     // res.render("property", { building: buildingRecord });
+        //     // res.locals.buildingRecord = building
+        //   }
+        // });
+        acreApi.parcel.taxInfo(`${property.parcelId}`, async function(err, parcel) {
+          if(err) {
+            console.log(err);
+          } else {
+            console.log(`tax info`, parcel);
+          }
+        });
+        acreApi.parcel.ownerHistory(`${property.parcelId}`, async function(err, parcel) {
+          if(err) {
+            console.log(err);
+          } else {
+            console.log(`owner info`, parcel);
+          }
+        });
+        acreApi.parcel.comps(`${property.parcelId}`, async function(err, parcel) {
+          if(err) {
+            console.log(err);
+          } else {
+            console.log(`comps info`, parcel);
+          }
+        });
       });
     } catch (err) {
       console.log(err);
     }
+    // ------------------------
+    //How we handling multiple res.render in one request?
+    // function renderPage(req,res) {
+    //   res.render("property")
+    // }
   },
-}
+  getBuildingInfo: async (req, res) => {
+    acreApi.parcel.buildingInfo(`${property.parcelId}`, async function(err, building) {
+      if(err) {
+        console.log(err);
+        return err
+      } else {
+        console.log(`building info`, building);
+        const buildingRecord = await BuildingModel.create({
+          useType: building.useType,
+          totalRooms: building.totalRooms,
+          basement: building.basement,
+          style: building.style,
+          bedrooms: building.bedrooms,
+          stories: building.stories,
+          grade: building.grade,
+          fullBaths: building.fullBaths,
+          halfBaths: building.halfBaths,
+          fireplaces: building.fireplaces,
+          exterior: building.exterior,
+          roof: building.roof,
+          cooling: building.cooling,
+          livableSquareFeet: building.livableSquareFeet
+
+        }) 
+        // res.render("property", { building: buildingRecord });
+        // res.locals.buildingRecord = building
+      }
+    });
+    res.render("property", { building: buildingRecord });
+  }
+};
 

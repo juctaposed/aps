@@ -39,7 +39,7 @@ app.use(logger("dev"));
 //Use forms for put / delete
 app.use(methodOverride("_method"));
 
-// Setup Sessions - stored in MongoDB
+// Setup Sessions - encrypt cookie, stored in MongoDB
 app.use(
   session({
     secret: "keyboard cat",
