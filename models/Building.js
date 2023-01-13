@@ -17,7 +17,15 @@ const BuildingModel = new mongoose.Schema({
     garages: {type: Number},
     roof: {type: String},
     cooling: {type: String},
-    livableSquareFeet: {type: Number}
+    livableSquareFeet: {type: Number},
+    searchedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
+    dateSearched: {
+        type: Date,
+        default: Date.now,
+    },
 });
 
 module.exports = mongoose.model("Building", BuildingModel);
