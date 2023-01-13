@@ -71,15 +71,23 @@ const parcelRecords = require('./parcels.js')
 // });
 
 
-acreApi.search(1000, 'Liberty', function(err, parcel) {
-	
+acreApi.parcel.buildingInfo('0062-B-00058-0000-00', function(err, parcel) {
 	if(err) {
 		console.log(err);
 	} else {
-		// Logs generalInfo for parcel
 		console.log(parcel);
 	}
 });
+
+// acreApi.search(1000, 'Liberty', function(err, parcel) {
+	
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		// Logs generalInfo for parcel
+// 		console.log(parcel);
+// 	}
+// });
 
 // searchProperty: async (req, res) => {
 //     try {

@@ -1,16 +1,18 @@
 const PropertyModel = require("../models/Property");
 const BuildingModel = require("../models/Building");
-// const express = require("express");
 const acreApi = require('acre-api');
-
 
 
 module.exports  = {
 
   searchProperty: async (req, res) => {
+    const data = {
+      streetNum: Number(req.body.streetNum), 
+      street: req.body.street.trim()
+    }
     try {
       console.log(req.body)
-      acreApi.search(Number(req.body.streetNum), req.body.street.trim(), async function(err, property) {
+      acreApi.search(data.streetNum, data.street, async function(err, property) {
         if(err) {
           return err
           // console.log(err);
@@ -35,33 +37,38 @@ module.exports  = {
           // res.locals.record = property
           // console.log(property);
         }
-        // acreApi.parcel.buildingInfo(`${property.parcelId}`, async function(err, building) {
-        //   if(err) {
-        //     console.log(err);
-        //     return err
-        //   } else {
-        //     console.log(`building info`, building);
-        //     const buildingRecord = await BuildingModel.create({
-        //       useType: building.useType,
-        //       totalRooms: building.totalRooms,
-        //       basement: building.basement,
-        //       style: building.style,
-        //       bedrooms: building.bedrooms,
-        //       stories: building.stories,
-        //       grade: building.grade,
-        //       fullBaths: building.fullBaths,
-        //       halfBaths: building.halfBaths,
-        //       fireplaces: building.fireplaces,
-        //       exterior: building.exterior,
-        //       roof: building.roof,
-        //       cooling: building.cooling,
-        //       livableSquareFeet: building.livableSquareFeet
+        acreApi.parcel.buildingInfo(`${property.parcelId}`, async function(err, building) {
+          if(err) {
+            console.log(err);
+            return err
+          } else {
+            console.log(`building info`, building);
+            const buildingRecord = await BuildingModel.create({
+              useType: building.useType,
+              totalRooms: building.totalRooms,
+              basement: building.basement,
+              style: building.style,
+              bedrooms: building.bedrooms,
+              stories: building.stories,
+              grade: building.grade,
+              fullBaths: building.fullBaths,
+              halfBaths: building.halfBaths,
+              fireplaces: building.fireplaces,
+              exterior: building.exterior,
+              roof: building.roof,
+              cooling: building.cooling,
+              livableSquareFeet: building.livableSquareFeet,
+              dateSearched: req.body.id, 
+              searchedBy: req.user.id,
 
-        //     }) 
-        //     // res.render("property", { building: buildingRecord });
-        //     // res.locals.buildingRecord = building
-        //   }
-        // });
+            }) 
+            if(building){
+              res.render("property", { building: buildingRecord });
+          }
+          else{
+              res.render("property", { building: "No building found" });
+          }}
+        });
         acreApi.parcel.taxInfo(`${property.parcelId}`, async function(err, parcel) {
           if(err) {
             console.log(err);
@@ -93,35 +100,35 @@ module.exports  = {
     //   res.render("property")
     // }
   },
-  getBuildingInfo: async (req, res) => {
-    acreApi.parcel.buildingInfo(`${property.parcelId}`, async function(err, building) {
-      if(err) {
-        console.log(err);
-        return err
-      } else {
-        console.log(`building info`, building);
-        const buildingRecord = await BuildingModel.create({
-          useType: building.useType,
-          totalRooms: building.totalRooms,
-          basement: building.basement,
-          style: building.style,
-          bedrooms: building.bedrooms,
-          stories: building.stories,
-          grade: building.grade,
-          fullBaths: building.fullBaths,
-          halfBaths: building.halfBaths,
-          fireplaces: building.fireplaces,
-          exterior: building.exterior,
-          roof: building.roof,
-          cooling: building.cooling,
-          livableSquareFeet: building.livableSquareFeet
+  // getBuildingInfo: async (req, res) => {
+  //   acreApi.parcel.buildingInfo(`${property.parcelId}`, async function(err, building) {
+  //     if(err) {
+  //       console.log(err);
+  //       return err
+  //     } else {
+  //       console.log(`building info`, building);
+  //       const buildingRecord = await BuildingModel.create({
+  //         useType: building.useType,
+  //         totalRooms: building.totalRooms,
+  //         basement: building.basement,
+  //         style: building.style,
+  //         bedrooms: building.bedrooms,
+  //         stories: building.stories,
+  //         grade: building.grade,
+  //         fullBaths: building.fullBaths,
+  //         halfBaths: building.halfBaths,
+  //         fireplaces: building.fireplaces,
+  //         exterior: building.exterior,
+  //         roof: building.roof,
+  //         cooling: building.cooling,
+  //         livableSquareFeet: building.livableSquareFeet
 
-        }) 
-        // res.render("property", { building: buildingRecord });
-        // res.locals.buildingRecord = building
-      }
-    });
-    res.render("property", { building: buildingRecord });
-  }
+  //       }) 
+  //       // res.render("property", { building: buildingRecord });
+  //       // res.locals.buildingRecord = building
+  //     }
+  //   });
+  //   res.render("property", { building: buildingRecord });
+  // }
 };
 
