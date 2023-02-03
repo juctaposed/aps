@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-<div class="container mx-auto sm:px-4">
+<div class="search-container mx-auto sm:px-4">
   <div class="flex flex-wrap  mt-5">
       <div class="w-1/2">
           <div class="profile-body">
@@ -9,7 +9,7 @@
               </p>
               <!-- <p><strong>Email</strong>: <%= user.email %></p>
               <p><strong>User Name</strong>: <%= user.userName %></p> -->
-              <a href="/logout" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-slate-500 text-white hover:bg-red-600">Logout</a>
+              <a href="/logout" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-900 text-white hover:bg-yellow-500 hover:border-gray-900 hover:border-2 transition-all">Logout</a>
           </div>
           <div class="mt-5">
             <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-2xl dark:text-white">Find a Property</h1>
@@ -27,7 +27,7 @@
                 <label for="imgUpload" class="form-label">Image</label>
                 <input type="file" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded" id="imageUpload" name="file">
               </div> -->
-              <button type="submit" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-500 text-white hover:bg-blue-400" value="Upload">Submit</button>
+              <button type="submit" class="inline-block align-middle text-center select-none border-2 border-gray-900 font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-yellow-500 text-white hover:bg-gray-900 hover:border-yellow-500 hover:border-2 transition-all" value="Upload">Submit</button>
             </form>
           </div>
       </div>
