@@ -33,102 +33,73 @@ module.exports  = {
             searchedBy: req.user.id,
           });
           console.log(record.address)
-          res.render("property", { property: record });
-          // res.locals.record = property
-          // console.log(property);
-        }
-        acreApi.parcel.buildingInfo(`${property.parcelId}`, async function(err, building) {
-          if(err) {
-            console.log(err);
-            return err
-          } else {
-            console.log(`building info`, building);
+         
+          const buildingInfoPromise = new Promise((resolve, reject) => {
+            acreApi.parcel.buildingInfo(`${property.parcelId}`, (err, building) => {
+              if(err) {
+                reject(err);
+              } else {
+                resolve(building);
+              }
+            });
+          });
+          const taxInfoPromise = new Promise((resolve, reject) => {
+            acreApi.parcel.taxInfo(`${property.parcelId}`, (err, parcel) => {
+              if(err) {
+                reject(err);
+              } else {
+                resolve(parcel);
+              }
+            });
+          });
+          const ownerHistoryPromise = new Promise((resolve, reject) => {
+            acreApi.parcel.ownerHistory(`${property.parcelId}`, (err, parcel) => {
+              if(err) {
+                reject(err);
+              } else {
+                resolve(parcel);
+              }
+            });
+          });
+          const compsPromise = new Promise((resolve, reject) => {
+            acreApi.parcel.comps(`${property.parcelId}`, (err, parcel) => {
+              if(err) {
+                reject(err);
+              } else {
+                resolve(parcel);
+              }
+            });
+          });
+
+          const [buildingInfo, taxInfo, ownerHistory, comps] = await Promise.all([buildingInfoPromise,taxInfoPromise, ownerHistoryPromise, compsPromise]);
+          if(buildingInfo){
             const buildingRecord = await BuildingModel.create({
-              useType: building.useType,
-              totalRooms: building.totalRooms,
-              basement: building.basement,
-              style: building.style,
-              bedrooms: building.bedrooms,
-              stories: building.stories,
-              grade: building.grade,
-              fullBaths: building.fullBaths,
-              halfBaths: building.halfBaths,
-              fireplaces: building.fireplaces,
-              exterior: building.exterior,
-              roof: building.roof,
-              cooling: building.cooling,
-              livableSquareFeet: building.livableSquareFeet,
+              useType: buildingInfo.useType,
+              totalRooms: buildingInfo.totalRooms,
+              basement: buildingInfo.basement,
+              style: buildingInfo.style,
+              bedrooms: buildingInfo.bedrooms,
+              stories: buildingInfo.stories,
+              grade: buildingInfo.grade,
+              fullBaths: buildingInfo.fullBaths,
+              halfBaths: buildingInfo.halfBaths,
+              fireplaces: buildingInfo.fireplaces,
+              exterior: buildingInfo.exterior,
+              roof: buildingInfo.roof,
+              cooling: buildingInfo.cooling,
+              livableSquareFeet: buildingInfo.livableSquareFeet,
               dateSearched: req.body.id, 
               searchedBy: req.user.id,
-
-            }) 
-            if(building){
-              res.render("property", { building: buildingRecord });
-          }
-          else{
-              res.render("property", { building: "No building found" });
-          }}
-        });
-        acreApi.parcel.taxInfo(`${property.parcelId}`, async function(err, parcel) {
-          if(err) {
-            console.log(err);
+            });
+            res.render("property", { property: record, building: buildingRecord, taxInfo: taxInfo, ownerHistory: ownerHistory, comps: comps });
           } else {
-            console.log(`tax info`, parcel);
+            res.render("property", { property: record, building: "No building found", taxInfo: taxInfo, ownerHistory: ownerHistory, comps: comps });
           }
-        });
-        acreApi.parcel.ownerHistory(`${property.parcelId}`, async function(err, parcel) {
-          if(err) {
-            console.log(err);
-          } else {
-            console.log(`owner info`, parcel);
-          }
-        });
-        acreApi.parcel.comps(`${property.parcelId}`, async function(err, parcel) {
-          if(err) {
-            console.log(err);
-          } else {
-            console.log(`comps info`, parcel);
-          }
-        });
+        }
       });
     } catch (err) {
       console.log(err);
     }
-    // ------------------------
-    //How we handling multiple res.render in one request?
-    // function renderPage(req,res) {
-    //   res.render("property")
-    // }
-  },
-  // getBuildingInfo: async (req, res) => {
-  //   acreApi.parcel.buildingInfo(`${property.parcelId}`, async function(err, building) {
-  //     if(err) {
-  //       console.log(err);
-  //       return err
-  //     } else {
-  //       console.log(`building info`, building);
-  //       const buildingRecord = await BuildingModel.create({
-  //         useType: building.useType,
-  //         totalRooms: building.totalRooms,
-  //         basement: building.basement,
-  //         style: building.style,
-  //         bedrooms: building.bedrooms,
-  //         stories: building.stories,
-  //         grade: building.grade,
-  //         fullBaths: building.fullBaths,
-  //         halfBaths: building.halfBaths,
-  //         fireplaces: building.fireplaces,
-  //         exterior: building.exterior,
-  //         roof: building.roof,
-  //         cooling: building.cooling,
-  //         livableSquareFeet: building.livableSquareFeet
-
-  //       }) 
-  //       // res.render("property", { building: buildingRecord });
-  //       // res.locals.buildingRecord = building
-  //     }
-  //   });
-  //   res.render("property", { building: buildingRecord });
-  // }
+  }
 };
 
