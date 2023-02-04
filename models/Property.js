@@ -25,6 +25,31 @@ const MarketValueModel = new mongoose.Schema({
   }
 })
 
+const AssessedValueModel = new mongoose.Schema({
+  this_year: {
+    landValue: {
+      type: Number
+    },
+    buildingValue: {
+      type: Number
+    },
+    totalValue: {
+      type: Number
+    },
+  },
+  last_year: {
+    landValue: {
+      type: Number
+    },
+    buildingValue: {
+      type: Number
+    },
+    totalValue: {
+      type: Number
+    },
+  }
+})
+
 const PropertyModel = new mongoose.Schema({
   parcelId: {
     type: String,
@@ -70,6 +95,7 @@ const PropertyModel = new mongoose.Schema({
   },
 
   fullMarketValues: MarketValueModel,
+  countyAssessedValues: AssessedValueModel,
 
   searchedBy: {
     type: mongoose.Schema.Types.ObjectId,
