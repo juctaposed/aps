@@ -5,6 +5,11 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Simple router for now, no liking properties just get viewing info working
 router.post("/search", propertyController.searchProperty);
+//FOR CREATING ENDPOINTS IN PROPERTY PAGE MODALS
+// router.get("/search/countyTaxRecord/:parcelId", propertyController.getCountyTaxRecord);
+// router.get("/search/buildingInfo/:parcelId", propertyController.getBuildingInfo);
+
+
 // router.get("/search", propertyController.getBuildingInfo)
 
 // 
