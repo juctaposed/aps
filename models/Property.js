@@ -1,11 +1,61 @@
 const mongoose = require("mongoose");
-	
+
+const MarketValueModel = new mongoose.Schema({
+  this_year: {
+    landValue: {
+      type: Number
+    },
+    buildingValue: {
+      type: Number
+    },
+    totalValue: {
+      type: Number
+    },
+  },
+  last_year: {
+    landValue: {
+      type: Number
+    },
+    buildingValue: {
+      type: Number
+    },
+    totalValue: {
+      type: Number
+    },
+  }
+})
+
+const AssessedValueModel = new mongoose.Schema({
+  this_year: {
+    landValue: {
+      type: Number
+    },
+    buildingValue: {
+      type: Number
+    },
+    totalValue: {
+      type: Number
+    },
+  },
+  last_year: {
+    landValue: {
+      type: Number
+    },
+    buildingValue: {
+      type: Number
+    },
+    totalValue: {
+      type: Number
+    },
+  }
+})
+
 const PropertyModel = new mongoose.Schema({
   parcelId: {
     type: String,
     require: true,
   },
-  
+
   municipality: {
     type: String,
     required: true,
@@ -21,6 +71,11 @@ const PropertyModel = new mongoose.Schema({
     required: true,
   },
 
+  ownerCode: {
+    type: String,
+    required: false
+  },
+
   school: {
     type: String,
     required: true,
@@ -31,13 +86,16 @@ const PropertyModel = new mongoose.Schema({
   },
 
   lotArea: {
-    type: String,
+    type: Number,
     required: false,
   },
   salePrice: {
-    type: String,
+    type: Number,
     required: false,
   },
+
+  fullMarketValues: MarketValueModel,
+  countyAssessedValues: AssessedValueModel,
 
   searchedBy: {
     type: mongoose.Schema.Types.ObjectId,
@@ -48,6 +106,7 @@ const PropertyModel = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+
 });
 
   

@@ -1,7 +1,6 @@
 <p align="center">
-<img src="https://github.com/juctaposed/allegheny-county-search/blob/main/public/imgs/logo/profile.png" alt="logo" align="center" width="225" height="225"/>
+<img src="https://github.com/juctaposed/aps/blob/main/public/imgs/frame6.svg" alt="logo" align="center" width="225" height="225"/>
 </p>
-
 <div align="center">
 
 # Allegheny Property Search
@@ -11,7 +10,8 @@
 
 This is a simple user interface that allows users to search for detailed property information from buildings in Allegheny County. 
 
-![](https://github.com/juctaposed/allegheny-county-search/blob/main/PAsearchExample.gif)
+**Website:** http://allegheny-property-search.herokuapp.com/
+![](https://github.com/juctaposed/aps/blob/main/public/imgs/apsDemoGif.gif)
 
 ## Optimizations
 
@@ -23,7 +23,7 @@ I pushed for an MVP that provides basic functionality of displaying useful prope
 
 - Further UI/UX - it's very bare bone currently as the main focus up to this point was on functionality. In particular, I'll be working on themes for better contrast and setting better content decisions for mobile users. 
 
-- Currently when completing the form to search for a property, strings such as "Street", "Road", or any synonyms thereof must be left off. E.g.
+- Currently when completing the form to search for a property, substrings such as "Street", "Road", or any synonyms thereof must be left off. E.g.
 
 `1000 Liberty Avenue`
 would be 
@@ -50,7 +50,8 @@ When planning out how I wanted to eventually manipulate data for visuals, I stum
 - Create a `.env` file in config folder and add the following as `key = value`
   - PORT = 2121 (can be any port example: 3000)
   - DB_STRING = `your database URI`
-  
+  - GOOGLE_CLIENT_ID = `your google client ID`
+  - GOOGLE_CLIENT_SECRET = `your google client secret`
 ---
 
 ## Run

@@ -10,7 +10,6 @@ const logger = require("morgan");
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const authRoutes = require('./routes/auth')
-const postRoutes = require("./routes/posts");
 const propertyRoutes = require("./routes/property");
 
 
@@ -39,7 +38,7 @@ app.use(logger("dev"));
 //Use forms for put / delete
 app.use(methodOverride("_method"));
 
-// Setup Sessions - stored in MongoDB
+// Setup Sessions - encrypt cookie, stored in MongoDB
 app.use(
   session({
     secret: "keyboard cat",
@@ -59,7 +58,6 @@ app.use(flash());
 //Setup Routes For Which The Server Is Listening
 app.use("/", mainRoutes);
 app.use('/auth', authRoutes);
-app.use("/post", postRoutes);
 app.use("/property", propertyRoutes);
 
 

@@ -1,10 +1,31 @@
 const acreApi = require('acre-api');
-const PropertyModel = require("./models/Property");
-const mongoose = require('mongoose')
-const testRecords = require('./parcels')
-const ParcelModel = require("./models/Parcel");
-const { parcel } = require('acre-api');
+const streetsName = require('./streetNames')
+const parcelRecords = require('./parcels.js')
 
+// function loopThruParcel(array) {
+// 	//parcelRecords
+// 	// 
+// 	// return array.replace('{parcelId: ', '')
+// 	let regex = /\{parcel:id /i;
+//     return regex.test(array)
+// }
+// loopThruParcel(parcelRecords)
+
+// pass in different street namespace. These names should contain both numbers within strings, which represent a Property Address. 
+// These PA's are the values type (strings). The key is `parcelId:`. The keyvalue is nested within each {object}. Each object is an element in an array
+
+
+
+
+
+// TAX EXAMPLE
+// acreApi.parcel.taxInfo('0084-N-00285-0000-00', function(err, parcel) {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(parcel);
+// 	}
+// });
 
 
 // async function addParcel() {
@@ -21,24 +42,24 @@ const { parcel } = require('acre-api');
 // addParcel()
 
 
-async function addParcel() {
-	for (let i = 0; i < 5; i++) {
-		try{
-			const records = await acreApi.parcel.generalInfo(
-				parcelRecords, function(err, parcel) {
-					if(err) {
-						return err;
-					} else {
-						return parcel;
-					}
-				});
-			console.log(records,'','\t')
-		} catch (error){
-			console.log(error.message)
-		}
-	}
-}
-addParcel()
+// async function addParcel() {
+// 	for (let i = 0; i < 5; i++) {
+// 		try{
+// 			const records = await acreApi.parcel.generalInfo(
+// 				parcelRecords, function(err, parcel) {
+// 					if(err) {
+// 						return err;
+// 					} else {
+// 						return parcel;
+// 					}
+// 				});
+// 			console.log(records,'','\t')
+// 		} catch (error){
+// 			console.log(error.message)
+// 		}
+// 	}
+// }
+// addParcel()
 
 // acreApi.parcel.generalInfo(record, function(err, parcel) {
 	
@@ -49,6 +70,14 @@ addParcel()
 // 	}
 // });
 
+
+acreApi.parcel.buildingInfo('0062-B-00058-0000-00', function(err, parcel) {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log(parcel);
+	}
+});
 
 // acreApi.search(1000, 'Liberty', function(err, parcel) {
 	

@@ -13,7 +13,7 @@ body{
     backgroundColor:#eee;
 }
 .home-5-bg {
-    background: #1E90FF;
+    background: #f3c01a;
     position: relative;
     background-size: cover;
     height: 50vh;
@@ -74,15 +74,6 @@ body{
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.footer {
-    font-size:small
-}
-
-.footer.p-10.bg-base-200.text-base-content {
-    /* border: 5px solid black; */
-    /* margin: 13.5% 0 0 0; */
-}
-
 @media (max-width: 767px) {
     #propSearch{
         display: flex;
@@ -90,7 +81,59 @@ body{
         align-items: center
     }
 }
+@media screen and (max-width: 1024px) {
+    .nav-logo {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+      }
+  }
 
 .container {
     padding-bottom:13.5%;
+    /* display: flex; */
 }
+
+.stat {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    font-size:small
+
+  }
+  /* Buttons */
+#search-button {
+    margin-bottom: 50%;
+}
+
+  /* Main */
+  .btn-warning:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid gold;
+  }
+  
+  /* Search Page */
+  @media only screen and (max-width: 767px) {
+    .profile-body,
+    .mt-5 {
+      text-align: center;
+    }
+  
+    .search-container form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    ul.flex {
+      justify-content: center;
+    }
+  }
+  
+

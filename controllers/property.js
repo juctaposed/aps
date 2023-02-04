@@ -1,76 +1,285 @@
 const PropertyModel = require("../models/Property");
-const express = require("express");
+const BuildingModel = require("../models/Building");
+const CountyTaxModel = require("../models/CountyTax")
 const acreApi = require('acre-api');
-// const callAcre = require('./lib/Api')
-// const Connections = require('./lib/Connections')
-// const Parser = require('./lib/Parser')
-// const State = require('./lib/State')
 
 
 module.exports  = {
-  
-  
 
   searchProperty: async (req, res) => {
+    const data = {
+      streetNum: Number(req.body.streetNum), 
+      street: req.body.street.trim()
+    }
     try {
       console.log(req.body)
-      acreApi.search(Number(req.body.streetNum), req.body.street.trim(), async function(err, parcels) {
+      acreApi.search(data.streetNum, data.street, async function(err, property) {
         if(err) {
           return err
           // console.log(err);
         } else {
-            console.log(`parcel returned`, parcels)
+            console.log(`property returned`, property)
             const record = await PropertyModel.create({
-            ownerName: parcels.ownerName, 
-            address: parcels.address,
-            parcelId: parcels.parcelId,
-            municipality: parcels.municipality,
-            school: parcels.school,
-            recordingDate: parcels.recordingDate,
-            lotArea: parcels.lotArea,
+            ownerName: property.ownerName, 
+            address: property.address,
+            ownerCode: property.ownerCode,
+            parcelId: property.parcelId,
+            municipality: property.municipality,
+            school: property.school,
+            recordingDate: property.recordingDate,
+            lotArea: property.lotArea,
+            salePrice: property.salePrice,
+            fullMarketValues: property.fullMarketValues,
+            countyAssessedValues: property.countyAssessedValues,
             dateSearched: req.body.id, 
-            searchedBy: req.user.id
+            searchedBy: req.user.id,
           });
-          console.log("parcels for ${address}");
           console.log(record.address)
-          // res.redirect("/property/:id");
-          res.render("property", { property: record });
-          // console.log(parcels);
-        }
-      });
+
+          console.log(record.countyAssessedValues)
+          const buildingInfoPromise = new Promise((resolve, reject) => {
+            acreApi.parcel.buildingInfo(`${property.parcelId}`, (err, building) => {
+              if(err) {
+                reject(err);
+              } else {
+                resolve(building);
+              }
+            });
+          });
+          const countyTaxPromise = new Promise((resolve, reject) => {
+            acreApi.parcel.taxInfo(`${property.parcelId}`, (err, countyTax) => {
+              if(err) {
+                reject(err);
+              } else {
+                resolve(countyTax);
+              }
+            });
+          });
+          const ownerHistoryPromise = new Promise((resolve, reject) => {
+            acreApi.parcel.ownerHistory(`${property.parcelId}`, (err, parcel) => {
+              if(err) {
+                reject(err);
+              } else {
+                resolve(parcel);
+              }
+            });
+          });
+          const compsPromise = new Promise((resolve, reject) => {
+            acreApi.parcel.comps(`${property.parcelId}`, (err, parcel) => {
+              if(err) {
+                reject(err);
+              } else {
+                resolve(parcel);
+              }
+            });
+          });
+          const [buildingInfo, ownerHistory, comps, countyTaxInfo] = await Promise.all([
+            buildingInfoPromise,
+            countyTaxPromise, 
+            ownerHistoryPromise, 
+            compsPromise
+          ]);
+          // Create new countyTaxRecord
+          if(countyTaxInfo) {
+            const countyTaxRecord = await CountyTaxModel.create({
+              parcelId: countyTaxInfo.parcelId,
+              municpality: countyTaxInfo.municpality,
+              address: countyTaxInfo.address,
+              ownerName: countyTaxInfo.ownerName,
+              taxBillAddr: countyTaxInfo.taxBillAddr,
+              nextTaxDueThisMonth: countyTaxInfo.nextTaxDueThisMonth,
+              grossTaxDueThisMonth: countyTaxInfo.grossTaxDueThisMonth,
+              taxValue: countyTaxInfo.taxValue,
+              millageRate: countyTaxInfo.millageRate,
+              taxHistory: countyTaxInfo.taxHistory,
+              dateSearched: req.body.id, 
+              searchedBy: req.user.id,
+            });
+          }
+          // Render the property template with the data
+          if(buildingInfo){
+            const buildingRecord = await BuildingModel.create({ 
+              useType: buildingInfo.useType,
+              totalRooms: buildingInfo.totalRooms,
+              basement: buildingInfo.basement,
+              style: buildingInfo.style,
+              bedrooms: buildingInfo.bedrooms,
+              stories: buildingInfo.stories,
+              grade: buildingInfo.grade,
+              fullBaths: buildingInfo.fullBaths,
+              halfBaths: buildingInfo.halfBaths,
+              fireplaces: buildingInfo.fireplaces,
+              exterior: buildingInfo.exterior,
+              roof: buildingInfo.roof,
+              cooling: buildingInfo.cooling,
+              livableSquareFeet: buildingInfo.livableSquareFeet,
+              dateSearched: req.body.id, 
+              searchedBy: req.user.id,
+            });
+            res.render("property", { property: record, building: buildingRecord });
+          } else {
+            res.render("property", { property: record, building: "No building found" });
+          }
+          }
+        });
     } catch (err) {
       console.log(err);
     }
   },
+  getBuildingInfo: async (parcelId) => {
+  try {
+    const buildingInfoPromise = new Promise((resolve, reject) => {
+      acreApi.parcel.buildingInfo(`${parcelId}`, (err, building) => {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(building);
+        }
+      });
+    });
+      const buildingInfo = await buildingInfoPromise;
+      const buildingRecord = await BuildingModel.create({
+            useType: buildingInfo.useType,
+            totalRooms: buildingInfo.totalRooms,
+            basement: buildingInfo.basement,
+            style: buildingInfo.style,
+            bedrooms: buildingInfo.bedrooms,
+            stories: buildingInfo.stories,
+            // other properties
+          });
+      return buildingRecord;
+  } catch (error) {
+      console.error(error);
+  }
+  },
+  getCountyTaxInfo: async (parcelId) => {
+  try {
+    const countyTaxInfoPromise = new Promise((resolve, reject) => {
+      acreApi.parcel.countyTaxInfo(`${parcelId}`, (err, building) => {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(building);
+        }
+      });
+    });
+      const countyTaxInfo = await countyTaxInfoPromise;
+      const countyTaxInfoRecord = await CountyTaxModel.create({
+            useType: buildingInfo.useType,
+            totalRooms: buildingInfo.totalRooms,
+            basement: buildingInfo.basement,
+            style: buildingInfo.style,
+            bedrooms: buildingInfo.bedrooms,
+            stories: buildingInfo.stories,
+            // other properties
+          });
+      return countyTaxInfoRecord;
+  } catch (error) {
+      console.error(error);
+  }
+  }
+};
 
-  // searchProperty: async (req, res) => {
-  //   try {
-  //     let streetNum = req.body.streetNum
-  //     let street = req.body.street
-  //     const parcels = await acreApi.street.street(streetNum, street, function(err, parcels) {
-  //       if(err) {
-  //         console.log(err);
-  //       } else {
-  //         console.log(parcels);
-  //       }
-  //     });
-  //     await Property.create({
-  //       owner: parcels.ownerName, ///duno if parcels. or req.body yet
-  //       address: parcels.address,
-  //       parcelId: parcels.parcelId,
-  //       municipality: parcels.municipality,
-  //       schoolDistrict: parcels.school,
-  //       deedRecording: parcels.recordingDate,
-  //       lotArea: parcels.lotArea,
-  //       user: req.user.id, ///dont need this?
-  //     });
-  //     console.log("parcelss for ${address}");
-  //     // res.redirect("/property/:id");
-  //     res.render("property.ejs", { address: address, parcelId: req.user.parcelId });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
 
-}
 
+
+
+// module.exports = {
+
+//   searchProperty: async (req, res) => {
+//     const data = {
+//       streetNum: Number(req.body.streetNum), 
+//       street: req.body.street.trim()
+//     }
+//     try {
+//       console.log(req.body)
+//       const property = acreApi.search(data.streetNum, data.street, async function(err, property) {
+//         if(err) {
+//           return err
+//           // console.log(err);
+//         } else {
+//             console.log(`property returned`, property)
+//             const record = await PropertyModel.create({
+//             ownerName: property.ownerName, 
+//             address: property.address,
+//             ownerCode: property.ownerCode,
+//             parcelId: property.parcelId,
+//             municipality: property.municipality,
+//             school: property.school,
+//             recordingDate: property.recordingDate,
+//             lotArea: property.lotArea,
+//             salePrice: property.salePrice,
+//             fullMarketValues: property.fullMarketValues,
+//             dateSearched: req.body.id, 
+//             searchedBy: req.user.id,
+//           });
+//           console.log(record.address)
+//           return property
+//         }
+//       });
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   },
+//   getCountyTaxRecord: async (property) => {
+//     try {
+//       const countyTaxPromise = new Promise((resolve, reject) => {
+//         acreApi.parcel.taxInfo(`${property.parcelId}`, (err, countyTax) => {
+//           if (err) {
+//             reject(err);
+//           } else {
+//             resolve(countyTax);
+//           }
+//         });
+//       });
+//       const countyTaxInfo = await countyTaxPromise;
+//       const countyTaxRecord = await CountyTaxModel.create({
+//         parcelId: countyTaxInfo.parcelId,
+//         municipality: countyTaxInfo.municipality,
+//         address: countyTaxInfo.address,
+//         ownerName: countyTaxInfo.ownerName,
+//         taxBillAddr: countyTaxInfo.taxBillAddr,
+//         nextTaxDueThisMonth: countyTaxInfo.nextTaxDueThisMonth,
+//         grossTaxDueThisMonth: countyTaxInfo.grossTaxDueThisMonth,
+//         taxValue: countyTaxInfo.taxValue,
+//         millageRate: countyTaxInfo.millageRate,
+//         taxHistory: countyTaxInfo.taxHistory,
+//         dateSearched: req.body.id, 
+//         searchedBy: req.user.id,
+//       });
+//       res.render("property", { countyTaxRecord });
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   },
+//   getBuildingInfo: async (property) => {
+//     try {
+//       const buildingPromise = new Promise((resolve, reject) => {
+//         acreApi.parcel.buildingInfo(`${property.parcelId}`, (err, building) => {
+//           if (err) {
+//             reject(err);
+//           } else {
+//             resolve(building);
+//           }
+//         });
+//       });
+//       const buildingInfo = await buildingPromise;
+//       const buildingRecord = await BuildingModel.create({
+//         useType: buildingInfo.useType,
+//         totalRooms: buildingInfo.totalRooms,
+//         basement: buildingInfo.basement,
+//         style: buildingInfo.style,
+//         bedrooms: buildingInfo.bedrooms,
+//         stories: buildingInfo.stories,
+//         yearBuilt: buildingInfo.yearBuilt,
+//         livingArea: buildingInfo.livingArea,
+//         dateSearched: req.body.id, 
+//         searchedBy: req.user.id,
+//       });
+//       res.render("property", { buildingRecord });
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   }
+
+// }
