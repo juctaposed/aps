@@ -76,59 +76,51 @@
         </div>
         <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Building Style</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.buildingStyle %></dd>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.style %></dd>
         </div>
         <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Bedrooms</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= building.bedrooms %> </dd>
         </div>
         <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Total Stories</dt>
+          <dt class="text-sm font-medium text-gray-500">Number of Stories</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.stories %></dd>
         </div>
         <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
+          <dt class="text-sm font-medium text-gray-500">Building Grade</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.grade %></dd>
         </div>
         <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
+          <dt class="text-sm font-medium text-gray-500">Full Baths</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.fullBaths %></dd>
         </div>
         <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Use Type</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= building.useType %> </dd>
+          <dt class="text-sm font-medium text-gray-500">Half Baths</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= building.halfBaths %> </dd>
+        </div>
+        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Fireplaces</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.fireplaces %></dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Exterior</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.exterior %></dd>
+        </div>
+        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Roof Type</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.roof %></dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Cooling</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= building.cooling %> </dd>
         </div>
         <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Total Rooms</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.totalRooms %></dd>
         </div>
         <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-        </div>
-        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Use Type</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= building.useType %> </dd>
-        </div>
-        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Total Rooms</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.totalRooms %></dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-        </div>
-        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
+          <dt class="text-sm font-medium text-gray-500">Livable Square Feet</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.livableSquareFeet %></dd>
         </div>
       </label>
     </label>

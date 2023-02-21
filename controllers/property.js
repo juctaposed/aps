@@ -95,6 +95,7 @@ module.exports  = {
               dateSearched: req.body.id, 
               searchedBy: req.user.id,
             });
+            console.log('county tax info: ', countyTaxRecord)
           }
           // Render the property template with the data
           if(buildingInfo){
@@ -116,6 +117,7 @@ module.exports  = {
               dateSearched: req.body.id, 
               searchedBy: req.user.id,
             });
+            console.log('building info: ', buildingRecord)
             res.render("property", { property: record, building: buildingRecord });
           } else {
             res.render("property", { property: record, building: "No building found" });
@@ -126,58 +128,58 @@ module.exports  = {
       console.log(err);
     }
   },
-  getBuildingInfo: async (parcelId) => {
-  try {
-    const buildingInfoPromise = new Promise((resolve, reject) => {
-      acreApi.parcel.buildingInfo(`${parcelId}`, (err, building) => {
-        if(err) {
-          reject(err);
-        } else {
-          resolve(building);
-        }
-      });
-    });
-      const buildingInfo = await buildingInfoPromise;
-      const buildingRecord = await BuildingModel.create({
-            useType: buildingInfo.useType,
-            totalRooms: buildingInfo.totalRooms,
-            basement: buildingInfo.basement,
-            style: buildingInfo.style,
-            bedrooms: buildingInfo.bedrooms,
-            stories: buildingInfo.stories,
-            // other properties
-          });
-      return buildingRecord;
-  } catch (error) {
-      console.error(error);
-  }
-  },
-  getCountyTaxInfo: async (parcelId) => {
-  try {
-    const countyTaxInfoPromise = new Promise((resolve, reject) => {
-      acreApi.parcel.countyTaxInfo(`${parcelId}`, (err, building) => {
-        if(err) {
-          reject(err);
-        } else {
-          resolve(building);
-        }
-      });
-    });
-      const countyTaxInfo = await countyTaxInfoPromise;
-      const countyTaxInfoRecord = await CountyTaxModel.create({
-            useType: buildingInfo.useType,
-            totalRooms: buildingInfo.totalRooms,
-            basement: buildingInfo.basement,
-            style: buildingInfo.style,
-            bedrooms: buildingInfo.bedrooms,
-            stories: buildingInfo.stories,
-            // other properties
-          });
-      return countyTaxInfoRecord;
-  } catch (error) {
-      console.error(error);
-  }
-  }
+  // getBuildingInfo: async (parcelId) => {
+  // try {
+  //   const buildingInfoPromise = new Promise((resolve, reject) => {
+  //     acreApi.parcel.buildingInfo(`${parcelId}`, (err, building) => {
+  //       if(err) {
+  //         reject(err);
+  //       } else {
+  //         resolve(building);
+  //       }
+  //     });
+  //   });
+  //     const buildingInfo = await buildingInfoPromise;
+  //     const buildingRecord = await BuildingModel.create({
+  //           useType: buildingInfo.useType,
+  //           totalRooms: buildingInfo.totalRooms,
+  //           basement: buildingInfo.basement,
+  //           style: buildingInfo.style,
+  //           bedrooms: buildingInfo.bedrooms,
+  //           stories: buildingInfo.stories,
+  //           // other properties
+  //         });
+  //     return buildingRecord;
+  // } catch (error) {
+  //     console.error(error);
+  // }
+  // },
+  // getCountyTaxInfo: async (parcelId) => {
+  // try {
+  //   const countyTaxInfoPromise = new Promise((resolve, reject) => {
+  //     acreApi.parcel.countyTaxInfo(`${parcelId}`, (err, building) => {
+  //       if(err) {
+  //         reject(err);
+  //       } else {
+  //         resolve(building);
+  //       }
+  //     });
+  //   });
+  //     const countyTaxInfo = await countyTaxInfoPromise;
+  //     const countyTaxInfoRecord = await CountyTaxModel.create({
+  //           useType: buildingInfo.useType,
+  //           totalRooms: buildingInfo.totalRooms,
+  //           basement: buildingInfo.basement,
+  //           style: buildingInfo.style,
+  //           bedrooms: buildingInfo.bedrooms,
+  //           stories: buildingInfo.stories,
+  //           // other properties
+  //         });
+  //     return countyTaxInfoRecord;
+  // } catch (error) {
+  //     console.error(error);
+  // }
+  // }
 };
 
 
