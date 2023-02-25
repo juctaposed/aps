@@ -20,7 +20,7 @@ const countyTaxHistorySchema = new mongoose.Schema({
 
 const CountyTaxModel = new mongoose.Schema({
     parcelId: {type: String},
-    municpality: {type: String},
+    municipality: {type: String},
     address: {type: String},
     ownerName: {type: String},
     taxBillAddr: {type: String},

@@ -30,7 +30,7 @@ const CompsModel = new mongoose.Schema({
         type: String,
         required: true,
     },
-    comps: CompSchema,
+    comps: [CompSchema],
     searchedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
