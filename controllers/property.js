@@ -1,6 +1,7 @@
 const PropertyModel = require("../models/Property");
 const BuildingModel = require("../models/Building");
 const CountyTaxModel = require("../models/CountyTax")
+const CompsModel = require("../models/Comps")
 const acreApi = require('acre-api');
 
 
@@ -56,11 +57,11 @@ module.exports  = {
             });
           });
           const ownerHistoryPromise = new Promise((resolve, reject) => {
-            acreApi.parcel.ownerHistory(`${property.parcelId}`, (err, parcel) => {
+            acreApi.parcel.ownerHistory(`${property.parcelId}`, (err, comps) => {
               if(err) {
                 reject(err);
               } else {
-                resolve(parcel);
+                resolve(comps);
               }
             });
           });
@@ -73,7 +74,7 @@ module.exports  = {
               }
             });
           });
-          const [buildingInfo, ownerHistory, comps, countyTaxInfo] = await Promise.all([
+          const [buildingInfo, ownerHistory, compsInfo, countyTaxInfo] = await Promise.all([
             buildingInfoPromise,
             countyTaxPromise, 
             ownerHistoryPromise, 
@@ -83,7 +84,7 @@ module.exports  = {
           if(countyTaxInfo) {
             const countyTaxRecord = await CountyTaxModel.create({
               parcelId: countyTaxInfo.parcelId,
-              municpality: countyTaxInfo.municpality,
+              municipality: countyTaxInfo.municpality,
               address: countyTaxInfo.address,
               ownerName: countyTaxInfo.ownerName,
               taxBillAddr: countyTaxInfo.taxBillAddr,
@@ -96,6 +97,28 @@ module.exports  = {
               searchedBy: req.user.id,
             });
             console.log('county tax info: ', countyTaxRecord)
+          }
+          if (compsInfo) {
+            const compsRecord = await CompsModel.create({
+              parcelId: compsInfo.parcelId,
+              municipality: compsInfo.municipality, // Fixed typo in the property name
+              address: compsInfo.address,
+              ownerName: compsInfo.ownerName,
+              comps: {
+                address: compsInfo.address,
+                yearBuilt: compsInfo.yearBuilt,
+                parcelId: compsInfo.parcelId,
+                salePrice: compsInfo.salePrice,
+                saleDate: compsInfo.saleDate,
+                livableSquareFeet: compsInfo.livableSquareFeet,
+                landValue: compsInfo.landValue,
+                bldgValue: compsInfo.bldgValue,
+                totalValue: compsInfo.totalValue
+              },
+              searchedBy: req.user.id,
+              dateSearched: req.body.id
+            });
+            console.log('comparable parcels : ', compsRecord)
           }
           // Render the property template with the data
           if(buildingInfo){
