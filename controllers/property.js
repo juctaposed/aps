@@ -19,8 +19,7 @@ module.exports  = {
           return err
           // console.log(err);
         } else {
-            console.log(`property returned`, property)
-            const record = await PropertyModel.create({
+            const result = await PropertyModel.create({
             ownerName: property.ownerName, 
             address: property.address,
             ownerCode: property.ownerCode,
@@ -35,9 +34,9 @@ module.exports  = {
             dateSearched: req.body.id, 
             searchedBy: req.user.id,
           });
-          console.log(record.address)
+          console.log(result.address)
 
-          console.log(record.countyAssessedValues)
+          console.log(result.countyAssessedValues)
           const buildingInfoPromise = new Promise((resolve, reject) => {
             acreApi.parcel.buildingInfo(`${property.parcelId}`, (err, building) => {
               if(err) {
@@ -122,6 +121,11 @@ module.exports  = {
           }
           // Render the property template with the data
           if(buildingInfo){
+            for (const [key, value] of Object.entries(buildingInfo)) {
+              if (value === '') {
+                buildingInfo[key] = 'N/A';
+              }
+            }
             const buildingRecord = await BuildingModel.create({ 
               useType: buildingInfo.useType,
               totalRooms: buildingInfo.totalRooms,
@@ -141,9 +145,9 @@ module.exports  = {
               searchedBy: req.user.id,
             });
             console.log('building info: ', buildingRecord)
-            res.render("property", { property: record, building: buildingRecord });
+            res.render("property", { property: result, building: buildingRecord });
           } else {
-            res.render("property", { property: record, building: "No building found" });
+            res.render("property", { property: result, building: "No building found" });
           }
           }
         });
