@@ -87,7 +87,8 @@ module.exports  = {
       res.locals.building = buildingRecord;
       console.log('building info: ', buildingRecord)
       
-        
+      // TODO
+      // Pass tax history to mongoDB to instantiate the nested props in DB
       const countyTaxRecord = await CountyTaxModel.create({
         parcelId: countyTaxInfo.parcelId,
         municipality: countyTaxInfo.municpality,
@@ -111,7 +112,8 @@ module.exports  = {
       
       console.log('county tax info: ', countyTaxRecord)
       console.log('tax history: ', countyTaxInfo.taxHistory)
-
+      // TODO
+      // Pass comparables to mongoDB to instantiate the nested props in DB
       const compsRecord = await CompsModel.create({
         parcelId: compsInfo.parcelId,
         municipality: compsInfo.municipality, 
@@ -133,7 +135,13 @@ module.exports  = {
       });
       res.locals.comps = compsRecord;
       console.log('comparable parcels : ', compsRecord)
-
+      for (const property in compsInfo.comps) {
+        if (compsInfo.comps.hasOwnProperty(property)) {
+          console.log(property, compsInfo.comps[property]);
+        }
+      }
+      // TODO
+      // Pass owner history to mongoDB to instantiate the nested props in DB
       const ownerRecord = await OwnerModel.create({
         parcelId: ownerInfo.parcelId,
         municipality: ownerInfo.municipality,
@@ -147,7 +155,12 @@ module.exports  = {
       });
       res.locals.owner = ownerRecord;
       console.log('owner history : ', ownerRecord)
-      
+      for (const ownerDetails in ownerInfo.owner) {
+        if (ownerInfo.owner.hasOwnProperty(ownerDetails)) {
+          console.log(ownerDetails, ownerInfo.owner[ownerDetails]);
+        }
+      }
+
       res.render("property");
     })
     } catch (err) {
