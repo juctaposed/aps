@@ -2,6 +2,7 @@ const PropertyModel = require("../models/Property");
 const BuildingModel = require("../models/Building");
 const CountyTaxModel = require("../models/CountyTax")
 const CompsModel = require("../models/Comps")
+const OwnerModel = require("../models/Owner")
 const acreApi = require('acre-api');
 
 module.exports  = {
@@ -53,8 +54,8 @@ module.exports  = {
           if(err) { reject(err); } else { resolve(countyTax); } });
       });
       const ownerHistoryPromise = new Promise((resolve, reject) => {
-        acreApi.parcel.ownerHistory(`${property.parcelId}`, (err, owners) => { 
-          if(err) { reject(err); } else { resolve(owners); } });
+        acreApi.parcel.ownerHistory(`${property.parcelId}`, (err, owner) => { 
+          if(err) { reject(err); } else { resolve(owner); } });
       });
       const compsPromise = new Promise((resolve, reject) => {
         acreApi.parcel.comps(`${property.parcelId}`, (err, comps) => { 
@@ -62,7 +63,7 @@ module.exports  = {
         });
       });
 
-      const [buildingInfo, ownerHistory, compsInfo, countyTaxInfo] = await Promise.all([buildingInfoPromise, ownerHistoryPromise, compsPromise, countyTaxPromise]);
+      const [buildingInfo, ownerInfo, compsInfo, countyTaxInfo] = await Promise.all([buildingInfoPromise, ownerHistoryPromise, compsPromise, countyTaxPromise]);
       for (const [key, value] of Object.entries(buildingInfo)) { if (value === '') {buildingInfo[key] = 'N/A'; }}
       
       const buildingRecord = await BuildingModel.create({ 
@@ -105,7 +106,6 @@ module.exports  = {
       for (const year in countyTaxInfo.taxHistory) {
         if (countyTaxInfo.taxHistory.hasOwnProperty(year)) {
           console.log(year, countyTaxInfo.taxHistory[year]);
-          // Here you can display or process the tax information for each year
         }
       }
       
@@ -114,7 +114,7 @@ module.exports  = {
 
       const compsRecord = await CompsModel.create({
         parcelId: compsInfo.parcelId,
-        municipality: compsInfo.municipality, // Fixed typo in the property name
+        municipality: compsInfo.municipality, 
         address: compsInfo.address,
         ownerName: compsInfo.ownerName,
         comps: {
@@ -133,6 +133,20 @@ module.exports  = {
       });
       res.locals.comps = compsRecord;
       console.log('comparable parcels : ', compsRecord)
+
+      const ownerRecord = await OwnerModel.create({
+        parcelId: ownerInfo.parcelId,
+        municipality: ownerInfo.municipality,
+        address: ownerInfo.address,
+        ownerName: ownerInfo.ownerName,
+        deedBook: ownerInfo.deedBook,
+        deedPage: ownerInfo.deedPage,
+        ownerHistory: ownerInfo.ownerHistory,
+        searchedBy: req.user.id,
+        dateSearched: req.body.id
+      });
+      res.locals.owner = ownerRecord;
+      console.log('owner history : ', ownerRecord)
       
       res.render("property");
     })
