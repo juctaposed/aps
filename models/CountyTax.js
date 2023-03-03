@@ -1,22 +1,23 @@
 const mongoose = require("mongoose");
 
 const countyTaxHistorySchema = new mongoose.Schema({
-    taxHistory: [
-      {
-        year: {
+  taxHistory: [
+    {
+      year: {
+        type: String
+      },
+      details: {
+        paidStatus: {
           type: String
         },
-        paidStatus: {
-          type: String,
-          default: ''
-        },
         tax: {
-          type: Number,
-          default: 0
+          type: Number
         }
       }
-    ]
-  });
+    }
+  ]
+});
+
 
 const CountyTaxModel = new mongoose.Schema({
     parcelId: {type: String},
