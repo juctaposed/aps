@@ -102,8 +102,15 @@ module.exports  = {
         searchedBy: req.user.id,
       });
       res.locals.countyTax = countyTaxRecord;
+      for (const year in countyTaxInfo.taxHistory) {
+        if (countyTaxInfo.taxHistory.hasOwnProperty(year)) {
+          console.log(year, countyTaxInfo.taxHistory[year]);
+          // Here you can display or process the tax information for each year
+        }
+      }
+      
       console.log('county tax info: ', countyTaxRecord)
-      console.log('gross tax due: ', countyTaxInfo.grossTaxDueNextMonth)
+      console.log('tax history: ', countyTaxInfo.taxHistory)
 
       const compsRecord = await CompsModel.create({
         parcelId: compsInfo.parcelId,
