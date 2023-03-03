@@ -4,9 +4,6 @@ const CountyTaxModel = require("../models/CountyTax")
 const CompsModel = require("../models/Comps")
 const acreApi = require('acre-api');
 
-// # TODO 
-// render everything to views - probly gotta split routes / uri 
-
 module.exports  = {
 
   searchProperty: async (req, res) => {
@@ -19,7 +16,6 @@ module.exports  = {
       acreApi.search(data.streetNum, data.street, async function(err, property) {
         if(err) {
           return err
-          // console.log(err);
         } else {
             const result = await PropertyModel.create({
               ownerName: property.ownerName, 
@@ -97,8 +93,8 @@ module.exports  = {
         address: countyTaxInfo.address,
         ownerName: countyTaxInfo.ownerName,
         taxBillAddr: countyTaxInfo.taxBillAddr,
-        nextTaxDueThisMonth: countyTaxInfo.nextTaxDueThisMonth,
-        grossTaxDueThisMonth: countyTaxInfo.grossTaxDueThisMonth,
+        netTaxDueThisMonth: countyTaxInfo.netTaxDueThisMonth,
+        grossTaxDueNextMonth: countyTaxInfo.grossTaxDueNextMonth,
         taxValue: countyTaxInfo.taxValue,
         millageRate: countyTaxInfo.millageRate,
         taxHistory: countyTaxInfo.taxHistory,
@@ -107,6 +103,7 @@ module.exports  = {
       });
       res.locals.countyTax = countyTaxRecord;
       console.log('county tax info: ', countyTaxRecord)
+      console.log('gross tax due: ', countyTaxInfo.grossTaxDueNextMonth)
 
       const compsRecord = await CompsModel.create({
         parcelId: compsInfo.parcelId,
