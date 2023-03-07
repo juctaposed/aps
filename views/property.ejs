@@ -35,7 +35,7 @@
           <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.recordingDate %></dd>
         </div>
         <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Lot Area</dt>
+          <dt class="text-sm font-medium text-gray-500">Lot Area (square footage)</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.lotArea %></dd>
         </div>
         <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -131,21 +131,29 @@
           <label for="my-modal-6" class="modal cursor-pointer">
             <label class="modal-box relative" for="">
               <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> </dd>
+                <dt class="text-sm font-medium text-gray-500">Tax Bill Address</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= countyTax.taxBillAddr %></dd>
               </div>
               <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
+                <dt class="text-sm font-medium text-gray-500">Net Tax Due This Month</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= countyTax.netTaxDueThisMonth %></dd>
               </div>
               <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
+                <dt class="text-sm font-medium text-gray-500">Gross Tax Due Next Month</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= countyTax.grossTaxDueNextMonth %></dd>
+              </div>
+              <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Tax Value</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= countyTax.taxValue %></dd>
+              </div>
+              <!-- <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">tax history</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"></dd>
               </div>
               <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">x</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
+              </div> -->
             </label>
           </label>
           
@@ -154,21 +162,21 @@
           <label for="my-modal-7" class="modal cursor-pointer">
             <label class="modal-box relative" for="">
               <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Deed Book</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= owner.deedBook %></dd>
+              </div>
+              <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Deed Page</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= owner.deedPage %></dd>
+              </div>
+              <!-- <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">x</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
               </div>
               <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">x</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
-              <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
-              <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
+              </div> -->
             </label>
           </label>
           
