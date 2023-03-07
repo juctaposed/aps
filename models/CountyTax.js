@@ -1,23 +1,17 @@
 const mongoose = require("mongoose");
 
-const countyTaxHistorySchema = new mongoose.Schema({
-  taxHistory: [
-    {
-      year: {
-        type: String
-      },
-      details: {
-        paidStatus: {
-          type: String
-        },
-        tax: {
-          type: Number
-        }
-      }
-    }
-  ]
+const taxHistorySchema = new mongoose.Schema({
+  paidStatus: { type: String, required: true },
+  tax: { type: Number, required: true },
+  penalty: { type: Number, required: true },
+  interest: { type: Number, required: true },
+  total: { type: Number, required: true },
+  datePaid: { type: String, required: true }
 });
 
+const taxHistoryYearSchema = new mongoose.Schema({
+  [String]: taxHistorySchema
+});
 
 const CountyTaxModel = new mongoose.Schema({
     parcelId: {type: String},
@@ -29,7 +23,10 @@ const CountyTaxModel = new mongoose.Schema({
     grossTaxDueNextMonth: {type: Number},
     taxValue: {type: Number},
     millageRate: {type: Number},
-    taxHistory: countyTaxHistorySchema,
+    taxHistory: {
+      type: Map,
+      of: taxHistoryYearSchema
+    },
     searchedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
