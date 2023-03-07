@@ -1,7 +1,7 @@
 const PropertyModel = require("../models/Property");
 const BuildingModel = require("../models/Building");
 const CountyTaxModel = require("../models/CountyTax")
-const CompsModel = require("../models/Comps")
+const CompsModel = require("../models/Comp")
 const OwnerModel = require("../models/Owner")
 const acreApi = require('acre-api');
 
@@ -63,8 +63,14 @@ module.exports  = {
         });
       });
 
-      const [buildingInfo, ownerInfo, compsInfo, countyTaxInfo] = await Promise.all([buildingInfoPromise, ownerHistoryPromise, compsPromise, countyTaxPromise]);
-      for (const [key, value] of Object.entries(buildingInfo)) { if (value === '') {buildingInfo[key] = 'N/A'; }}
+      const [buildingInfo, ownerInfo, compsInfo, countyTaxInfo] = await Promise.all(
+        [buildingInfoPromise, ownerHistoryPromise, compsPromise, countyTaxPromise]);
+
+      for (const [key, value] of Object.entries(buildingInfo)) { 
+        if (value === '') {
+          buildingInfo[key] = 'N/A'; 
+        }
+      }
       
       const buildingRecord = await BuildingModel.create({ 
         useType: buildingInfo.useType,
@@ -104,8 +110,10 @@ module.exports  = {
         searchedBy: req.user.id,
       });
       res.locals.countyTax = countyTaxRecord;
+      
       for (const year in countyTaxInfo.taxHistory) {
         if (countyTaxInfo.taxHistory.hasOwnProperty(year)) {
+          await CountyTaxModel.updateOne(countyTaxInfo.taxHistory[year])
           console.log(year, countyTaxInfo.taxHistory[year]);
         }
       }
@@ -138,6 +146,11 @@ module.exports  = {
       for (const property in compsInfo.comps) {
         if (compsInfo.comps.hasOwnProperty(property)) {
           console.log(property, compsInfo.comps[property]);
+        }
+      }
+      for(const [key,value] of Object.entries(ownerInfo)) {
+        if (value === '') {
+          ownerInfo[key] = 'N/A';
         }
       }
       // TODO
