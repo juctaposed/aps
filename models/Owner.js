@@ -1,11 +1,18 @@
 const mongoose = require('mongoose');
 
-const OwnerSchema = new mongoose.Schema({
-  previousOwner: {
-    owner: String,
-    saleDate: String,
-    salePrice: Number
-    }
+const ownerHistorySchema = new mongoose.Schema({
+  owner: {
+    type: String,
+    required: true
+  },
+  saleDate: {
+    type: Date,
+    required: true
+  },
+  salePrice: {
+    type: Number,
+    required: true
+  }
 });
 
 const OwnerModel = new mongoose.Schema({
@@ -15,7 +22,7 @@ const OwnerModel = new mongoose.Schema({
   ownerName: String,
   deedBook: String,
   deedPage: String,
-  ownerHistory: [OwnerSchema]
+  ownerHistory: [ownerHistorySchema]
 });
 
 module.exports = mongoose.model('Owners', OwnerModel);
