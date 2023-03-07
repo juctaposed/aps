@@ -1,20 +1,15 @@
 const mongoose = require("mongoose");
 
 const CompSchema = new mongoose.Schema({
-    comparables: [
-        {
-        address: String,
-        yearBuilt: String,
-        parcelId: String,
-        salePrice: Number,
-        saleDate: String,
-        livableSquareFeet: Number,
-        landValue: Number,
-        bldgValue: Number,
-        totalValue: Number
-        }
-    ]
-
+        address: {type: String, required: true},
+        yearBuilt: {type: String, required: true},
+        parcelId: {type: String, required: true},
+        salePrice: {type: Number, required: true},
+        saleDate: {type: String, required: true},
+        livableSquareFeet: {type: Number, required: true},
+        landValue: {type: Number, required: true},
+        bldgValue: {type: Number, required: true},
+        totalValue: {type: Number, required: true}
 })
 
 const CompsModel = new mongoose.Schema({
@@ -34,7 +29,7 @@ const CompsModel = new mongoose.Schema({
         type: String,
         required: true,
     },
-    comps: CompSchema,
+    comps: [CompSchema],
     searchedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
