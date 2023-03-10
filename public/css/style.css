@@ -136,4 +136,9 @@ body{
     }
   }
   
-
+  @media (max-width: 768px) {
+    .nav-logo {
+      display: none;
+    }
+  }
+  
