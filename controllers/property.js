@@ -8,13 +8,13 @@ const acreApi = require('acre-api');
 module.exports  = {
 
   searchProperty: async (req, res) => {
-    const data = {
+    const input = {
       streetNum: Number(req.body.streetNum), 
       street: req.body.street.trim()
     }
     try {
       console.log(req.body)
-      acreApi.search(data.streetNum, data.street, async function(err, property) {
+      acreApi.search(input.streetNum, input.street, async function(err, property) {
         if(err) {
           return err
         } else {
@@ -120,41 +120,31 @@ module.exports  = {
       
       console.log('county tax info: ', countyTaxRecord)
       console.log('tax history: ', countyTaxInfo.taxHistory)
-      // TODO
-      // Pass comparables to mongoDB to instantiate the nested props in DB
+
       const compsRecord = await CompsModel.create({
         parcelId: compsInfo.parcelId,
         municipality: compsInfo.municipality, 
         address: compsInfo.address,
         ownerName: compsInfo.ownerName,
-        comps: {
-          address: compsInfo.address,
-          yearBuilt: compsInfo.yearBuilt,
-          parcelId: compsInfo.parcelId,
-          salePrice: compsInfo.salePrice,
-          saleDate: compsInfo.saleDate,
-          livableSquareFeet: compsInfo.livableSquareFeet,
-          landValue: compsInfo.landValue,
-          bldgValue: compsInfo.bldgValue,
-          totalValue: compsInfo.totalValue
-        },
+        comps: compsInfo.comps,
         searchedBy: req.user.id,
         dateSearched: req.body.id
       });
       res.locals.comps = compsRecord;
       console.log('comparable parcels : ', compsRecord)
+      
       for (const property in compsInfo.comps) {
         if (compsInfo.comps.hasOwnProperty(property)) {
           console.log(property, compsInfo.comps[property]);
         }
       }
+
       for(const [key,value] of Object.entries(ownerInfo)) {
         if (value === '') {
           ownerInfo[key] = 'N/A';
         }
       }
-      // TODO
-      // Pass owner history to mongoDB to instantiate the nested props in DB
+
       const ownerRecord = await OwnerModel.create({
         parcelId: ownerInfo.parcelId,
         municipality: ownerInfo.municipality,
