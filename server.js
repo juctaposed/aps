@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const passport = require("passport");
+// middleware for cookies
 const session = require("express-session");
+//store session data in mongo
 const MongoStore = require("connect-mongo")(session);
 const methodOverride = require("method-override");
 const flash = require("express-flash");
@@ -25,14 +27,14 @@ connectDB();
 //Using EJS for views
 app.set("view engine", "ejs");
 
-//Static Folder
+//Serve static files from public
 app.use(express.static("public"));
 
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//Logging
+//Log HTTP requests
 app.use(logger("dev"));
 
 //Use forms for put / delete
