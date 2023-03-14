@@ -52,7 +52,7 @@
       <label class="modal-box relative" for="">
         <h3 class="text-lg font-bold">Request Additional Features</h3>
         <p class="py-4">Reach out to our team if you would like to request custom reports for specific property information</p>
-        <a href="http://localhost:2121/contact" class="py-4 fas fa-envelope me-5 text-secondary"> Contact Us</a>
+        <a href="/contact" class="py-4 fas fa-envelope me-5 text-secondary"> Contact Us</a>
       </label>
       </label>
 
@@ -136,15 +136,15 @@
                 </div>
                 <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">Net Tax Due This Month</dt>
-                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= countyTax.netTaxDueThisMonth %></dd>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= countyTax.netTaxDueThisMonth.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
                 </div>
                 <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">Gross Tax Due Next Month</dt>
-                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= countyTax.grossTaxDueNextMonth %></dd>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= countyTax.grossTaxDueNextMonth.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
                 </div>
                 <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">Tax Value</dt>
-                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= countyTax.taxValue %></dd>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= countyTax.taxValue.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
                 </div>
               </label>
             </label>
@@ -161,6 +161,29 @@
                   <dt class="text-sm font-medium text-gray-500">Deed Page</dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= owner.deedPage %></dd>
                 </div>
+
+              
+                <div style="text-align:center" class="px-4 py-2">
+                  <p>Owner History</p>
+                </div>
+
+                <ul>
+                <% for (let i = 0; i < owner.ownerHistory.length; i++) { %>
+                    <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt class="text-sm font-medium text-gray-500"><strong>Owner</strong></dt>
+                      <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><strong><%= owner.ownerHistory[i].owner %></strong></dd>
+                    </div>
+                    <div class="bg-white-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt class="text-sm font-medium text-gray-500">Sale Date</dt>
+                      <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= owner.ownerHistory[i].saleDate.toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }) %></dd>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt class="text-sm font-medium text-gray-500">Sale Price</dt>
+                      <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= owner.ownerHistory[i].salePrice.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
+                    </div>
+                  </br>
+                  <% }; %>
+                </ul>
               </label>
             </label>
 
@@ -170,6 +193,9 @@
               <div class="modal-box relative">
                   <!-- Loop thru Comps -->
                     <ul>
+                      <!-- TODO -->
+                      <!-- Finishg writing a check if there are no comparables, nothing is currently displaying in modal -->
+
                       <% for (let i = 0; i < comps.comps.length; i++) { %>
                         <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                           <dt class="text-sm font-medium text-gray-500"><strong>Address</strong></dt>
