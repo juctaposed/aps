@@ -10,8 +10,8 @@
 
 This is a simple user interface that allows users to search for detailed property information from buildings in Allegheny County. 
 
-**Website:** http://allegheny-property-search.herokuapp.com/
-![](https://github.com/juctaposed/aps/blob/main/public/imgs/apsDemoGif.gif)
+**Website:** https://allegheny-property-search.up.railway.app/
+![](https://github.com/juctaposed/aps/blob/main/public/imgs/apsDemo.gif)
 
 ## Optimizations
 
