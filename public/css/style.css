@@ -125,11 +125,11 @@ body{
       text-align: center;
     }
   
-    .search-container form {
+    /* .search-container form {
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
+    } */
   
     ul.flex {
       justify-content: center;
@@ -139,6 +139,39 @@ body{
   @media (max-width: 768px) {
     .nav-logo {
       display: none;
+    }
+  }
+  
+  @media screen and (max-width: 640px) {
+    .search-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 55px 0;
+    }
+  }
+  /* Assessed values stacked vertically on mobile */
+@media screen and (max-width: 767px) {
+    .stats.stats-horizontal .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .stats.stats-horizontal .stat-value {
+      margin-top: 0.5rem;
+    }
+  }
+  
+  /* Market values stacked vertically on mobile */
+  @media screen and (max-width: 767px) {
+    .stats.stats-horizontal.lg\:flex-row.flex-col .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .stats.stats-horizontal.lg\:flex-row.flex-col .stat-value {
+      margin-top: 0.5rem;
     }
   }
   

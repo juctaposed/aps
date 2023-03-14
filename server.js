@@ -2,9 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const passport = require("passport");
-// middleware for cookies
 const session = require("express-session");
-//store session data in mongo
 const MongoStore = require("connect-mongo")(session);
 const methodOverride = require("method-override");
 const flash = require("express-flash");
