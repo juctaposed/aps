@@ -138,8 +138,7 @@ module.exports  = {
           console.log(property, compsInfo.comps[property]);
         }
       }
-      console.log("yo this is the FIRST comparable parcel: ", compsInfo.comps[0])
-
+      
       for(const [key,value] of Object.entries(ownerInfo)) {
         if (value === '') {
           ownerInfo[key] = 'N/A';
