@@ -1,285 +1,174 @@
 const PropertyModel = require("../models/Property");
 const BuildingModel = require("../models/Building");
 const CountyTaxModel = require("../models/CountyTax")
+const CompsModel = require("../models/Comp")
+const OwnerModel = require("../models/Owner")
 const acreApi = require('acre-api');
-
 
 module.exports  = {
 
   searchProperty: async (req, res) => {
-    const data = {
+    const input = {
       streetNum: Number(req.body.streetNum), 
       street: req.body.street.trim()
     }
     try {
       console.log(req.body)
-      acreApi.search(data.streetNum, data.street, async function(err, property) {
+      acreApi.search(input.streetNum, input.street, async function(err, property) {
         if(err) {
           return err
-          // console.log(err);
         } else {
-            console.log(`property returned`, property)
-            const record = await PropertyModel.create({
-            ownerName: property.ownerName, 
-            address: property.address,
-            ownerCode: property.ownerCode,
-            parcelId: property.parcelId,
-            municipality: property.municipality,
-            school: property.school,
-            recordingDate: property.recordingDate,
-            lotArea: property.lotArea,
-            salePrice: property.salePrice,
-            fullMarketValues: property.fullMarketValues,
-            countyAssessedValues: property.countyAssessedValues,
-            dateSearched: req.body.id, 
-            searchedBy: req.user.id,
-          });
-          console.log(record.address)
-
-          console.log(record.countyAssessedValues)
-          const buildingInfoPromise = new Promise((resolve, reject) => {
-            acreApi.parcel.buildingInfo(`${property.parcelId}`, (err, building) => {
-              if(err) {
-                reject(err);
-              } else {
-                resolve(building);
-              }
-            });
-          });
-          const countyTaxPromise = new Promise((resolve, reject) => {
-            acreApi.parcel.taxInfo(`${property.parcelId}`, (err, countyTax) => {
-              if(err) {
-                reject(err);
-              } else {
-                resolve(countyTax);
-              }
-            });
-          });
-          const ownerHistoryPromise = new Promise((resolve, reject) => {
-            acreApi.parcel.ownerHistory(`${property.parcelId}`, (err, parcel) => {
-              if(err) {
-                reject(err);
-              } else {
-                resolve(parcel);
-              }
-            });
-          });
-          const compsPromise = new Promise((resolve, reject) => {
-            acreApi.parcel.comps(`${property.parcelId}`, (err, parcel) => {
-              if(err) {
-                reject(err);
-              } else {
-                resolve(parcel);
-              }
-            });
-          });
-          const [buildingInfo, ownerHistory, comps, countyTaxInfo] = await Promise.all([
-            buildingInfoPromise,
-            countyTaxPromise, 
-            ownerHistoryPromise, 
-            compsPromise
-          ]);
-          // Create new countyTaxRecord
-          if(countyTaxInfo) {
-            const countyTaxRecord = await CountyTaxModel.create({
-              parcelId: countyTaxInfo.parcelId,
-              municpality: countyTaxInfo.municpality,
-              address: countyTaxInfo.address,
-              ownerName: countyTaxInfo.ownerName,
-              taxBillAddr: countyTaxInfo.taxBillAddr,
-              nextTaxDueThisMonth: countyTaxInfo.nextTaxDueThisMonth,
-              grossTaxDueThisMonth: countyTaxInfo.grossTaxDueThisMonth,
-              taxValue: countyTaxInfo.taxValue,
-              millageRate: countyTaxInfo.millageRate,
-              taxHistory: countyTaxInfo.taxHistory,
+            const result = await PropertyModel.create({
+              ownerName: property.ownerName, 
+              address: property.address,
+              ownerCode: property.ownerCode,
+              parcelId: property.parcelId,
+              municipality: property.municipality,
+              school: property.school,
+              recordingDate: property.recordingDate,
+              lotArea: property.lotArea,
+              salePrice: property.salePrice,
+              fullMarketValues: property.fullMarketValues,
+              countyAssessedValues: property.countyAssessedValues,
               dateSearched: req.body.id, 
               searchedBy: req.user.id,
             });
-          }
-          // Render the property template with the data
-          if(buildingInfo){
-            const buildingRecord = await BuildingModel.create({ 
-              useType: buildingInfo.useType,
-              totalRooms: buildingInfo.totalRooms,
-              basement: buildingInfo.basement,
-              style: buildingInfo.style,
-              bedrooms: buildingInfo.bedrooms,
-              stories: buildingInfo.stories,
-              grade: buildingInfo.grade,
-              fullBaths: buildingInfo.fullBaths,
-              halfBaths: buildingInfo.halfBaths,
-              fireplaces: buildingInfo.fireplaces,
-              exterior: buildingInfo.exterior,
-              roof: buildingInfo.roof,
-              cooling: buildingInfo.cooling,
-              livableSquareFeet: buildingInfo.livableSquareFeet,
-              dateSearched: req.body.id, 
-              searchedBy: req.user.id,
+            res.locals.property = result;
+          console.log(result.address)
+          console.log(result.countyAssessedValues)
+          if (!result.address) {
+            return res.render("property", {
+              property: null,
+              building: null,
+              countyTax: null,
+              comps: null,
             });
-            res.render("property", { property: record, building: buildingRecord });
-          } else {
-            res.render("property", { property: record, building: "No building found" });
           }
-          }
+        }
+      const buildingInfoPromise = new Promise((resolve, reject) => {
+        acreApi.parcel.buildingInfo(`${property.parcelId}`, (err, building) => {
+          if(err) { reject(err); } else { resolve(building); }  });
+      });
+      const countyTaxPromise = new Promise((resolve, reject) => {
+        acreApi.parcel.taxInfo(`${property.parcelId}`, (err, countyTax) => {
+          if(err) { reject(err); } else { resolve(countyTax); } });
+      });
+      const ownerHistoryPromise = new Promise((resolve, reject) => {
+        acreApi.parcel.ownerHistory(`${property.parcelId}`, (err, owner) => { 
+          if(err) { reject(err); } else { resolve(owner); } });
+      });
+      const compsPromise = new Promise((resolve, reject) => {
+        acreApi.parcel.comps(`${property.parcelId}`, (err, comps) => { 
+          if(err) { reject(err); } else { resolve(comps); }
         });
+      });
+
+      const [buildingInfo, ownerInfo, compsInfo, countyTaxInfo] = await Promise.all(
+        [buildingInfoPromise, ownerHistoryPromise, compsPromise, countyTaxPromise]);
+
+      for (const [key, value] of Object.entries(buildingInfo)) { 
+        if (value === '') {
+          buildingInfo[key] = 'N/A'; 
+        }
+      }
+      
+      const buildingRecord = await BuildingModel.create({ 
+        useType: buildingInfo.useType,
+        totalRooms: buildingInfo.totalRooms,
+        basement: buildingInfo.basement,
+        style: buildingInfo.style,
+        bedrooms: buildingInfo.bedrooms,
+        stories: buildingInfo.stories,
+        grade: buildingInfo.grade,
+        fullBaths: buildingInfo.fullBaths,
+        halfBaths: buildingInfo.halfBaths,
+        fireplaces: buildingInfo.fireplaces,
+        exterior: buildingInfo.exterior,
+        roof: buildingInfo.roof,
+        cooling: buildingInfo.cooling,
+        livableSquareFeet: buildingInfo.livableSquareFeet,
+        dateSearched: req.body.id, 
+        searchedBy: req.user.id,
+      });
+      res.locals.building = buildingRecord;
+      console.log('building info: ', buildingRecord)
+      
+      // TODO
+      // Pass tax history to mongoDB to instantiate the nested props in DB
+      const countyTaxRecord = await CountyTaxModel.create({
+        parcelId: countyTaxInfo.parcelId,
+        municipality: countyTaxInfo.municpality,
+        address: countyTaxInfo.address,
+        ownerName: countyTaxInfo.ownerName,
+        taxBillAddr: countyTaxInfo.taxBillAddr,
+        netTaxDueThisMonth: countyTaxInfo.netTaxDueThisMonth,
+        grossTaxDueNextMonth: countyTaxInfo.grossTaxDueNextMonth,
+        taxValue: countyTaxInfo.taxValue,
+        millageRate: countyTaxInfo.millageRate,
+        taxHistory: countyTaxInfo.taxHistory,
+        dateSearched: req.body.id, 
+        searchedBy: req.user.id,
+      });
+      res.locals.countyTax = countyTaxRecord;
+      
+      for (const year in countyTaxInfo.taxHistory) {
+        if (countyTaxInfo.taxHistory.hasOwnProperty(year)) {
+          await CountyTaxModel.updateOne(countyTaxInfo.taxHistory[year])
+          console.log(year, countyTaxInfo.taxHistory[year]);
+        }
+      }
+      
+      console.log('county tax info: ', countyTaxRecord)
+      console.log('tax history: ', countyTaxInfo.taxHistory)
+
+      const compsRecord = await CompsModel.create({
+        parcelId: compsInfo.parcelId,
+        municipality: compsInfo.municipality, 
+        address: compsInfo.address,
+        ownerName: compsInfo.ownerName,
+        comps: compsInfo.comps,
+        searchedBy: req.user.id,
+        dateSearched: req.body.id
+      });
+      res.locals.comps = compsRecord;
+      console.log('comparable parcels : ', compsRecord)
+      
+      for (const property in compsInfo.comps) {
+        if (compsInfo.comps.hasOwnProperty(property)) {
+          console.log(property, compsInfo.comps[property]);
+        }
+      }
+      console.log("yo this is the FIRST comparable parcel: ", compsInfo.comps[0])
+
+      for(const [key,value] of Object.entries(ownerInfo)) {
+        if (value === '') {
+          ownerInfo[key] = 'N/A';
+        }
+      }
+
+      const ownerRecord = await OwnerModel.create({
+        parcelId: ownerInfo.parcelId,
+        municipality: ownerInfo.municipality,
+        address: ownerInfo.address,
+        ownerName: ownerInfo.ownerName,
+        deedBook: ownerInfo.deedBook,
+        deedPage: ownerInfo.deedPage,
+        ownerHistory: ownerInfo.ownerHistory,
+        searchedBy: req.user.id,
+        dateSearched: req.body.id
+      });
+      res.locals.owner = ownerRecord;
+      console.log('owner history : ', ownerRecord)
+      for (const ownerDetails in ownerInfo.owner) {
+        if (ownerInfo.owner.hasOwnProperty(ownerDetails)) {
+          console.log(ownerDetails, ownerInfo.owner[ownerDetails]);
+        }
+      }
+
+      res.render("property");
+    })
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  },
-  getBuildingInfo: async (parcelId) => {
-  try {
-    const buildingInfoPromise = new Promise((resolve, reject) => {
-      acreApi.parcel.buildingInfo(`${parcelId}`, (err, building) => {
-        if(err) {
-          reject(err);
-        } else {
-          resolve(building);
-        }
-      });
-    });
-      const buildingInfo = await buildingInfoPromise;
-      const buildingRecord = await BuildingModel.create({
-            useType: buildingInfo.useType,
-            totalRooms: buildingInfo.totalRooms,
-            basement: buildingInfo.basement,
-            style: buildingInfo.style,
-            bedrooms: buildingInfo.bedrooms,
-            stories: buildingInfo.stories,
-            // other properties
-          });
-      return buildingRecord;
-  } catch (error) {
-      console.error(error);
   }
-  },
-  getCountyTaxInfo: async (parcelId) => {
-  try {
-    const countyTaxInfoPromise = new Promise((resolve, reject) => {
-      acreApi.parcel.countyTaxInfo(`${parcelId}`, (err, building) => {
-        if(err) {
-          reject(err);
-        } else {
-          resolve(building);
-        }
-      });
-    });
-      const countyTaxInfo = await countyTaxInfoPromise;
-      const countyTaxInfoRecord = await CountyTaxModel.create({
-            useType: buildingInfo.useType,
-            totalRooms: buildingInfo.totalRooms,
-            basement: buildingInfo.basement,
-            style: buildingInfo.style,
-            bedrooms: buildingInfo.bedrooms,
-            stories: buildingInfo.stories,
-            // other properties
-          });
-      return countyTaxInfoRecord;
-  } catch (error) {
-      console.error(error);
-  }
-  }
-};
-
-
-
-
-
-// module.exports = {
-
-//   searchProperty: async (req, res) => {
-//     const data = {
-//       streetNum: Number(req.body.streetNum), 
-//       street: req.body.street.trim()
-//     }
-//     try {
-//       console.log(req.body)
-//       const property = acreApi.search(data.streetNum, data.street, async function(err, property) {
-//         if(err) {
-//           return err
-//           // console.log(err);
-//         } else {
-//             console.log(`property returned`, property)
-//             const record = await PropertyModel.create({
-//             ownerName: property.ownerName, 
-//             address: property.address,
-//             ownerCode: property.ownerCode,
-//             parcelId: property.parcelId,
-//             municipality: property.municipality,
-//             school: property.school,
-//             recordingDate: property.recordingDate,
-//             lotArea: property.lotArea,
-//             salePrice: property.salePrice,
-//             fullMarketValues: property.fullMarketValues,
-//             dateSearched: req.body.id, 
-//             searchedBy: req.user.id,
-//           });
-//           console.log(record.address)
-//           return property
-//         }
-//       });
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   },
-//   getCountyTaxRecord: async (property) => {
-//     try {
-//       const countyTaxPromise = new Promise((resolve, reject) => {
-//         acreApi.parcel.taxInfo(`${property.parcelId}`, (err, countyTax) => {
-//           if (err) {
-//             reject(err);
-//           } else {
-//             resolve(countyTax);
-//           }
-//         });
-//       });
-//       const countyTaxInfo = await countyTaxPromise;
-//       const countyTaxRecord = await CountyTaxModel.create({
-//         parcelId: countyTaxInfo.parcelId,
-//         municipality: countyTaxInfo.municipality,
-//         address: countyTaxInfo.address,
-//         ownerName: countyTaxInfo.ownerName,
-//         taxBillAddr: countyTaxInfo.taxBillAddr,
-//         nextTaxDueThisMonth: countyTaxInfo.nextTaxDueThisMonth,
-//         grossTaxDueThisMonth: countyTaxInfo.grossTaxDueThisMonth,
-//         taxValue: countyTaxInfo.taxValue,
-//         millageRate: countyTaxInfo.millageRate,
-//         taxHistory: countyTaxInfo.taxHistory,
-//         dateSearched: req.body.id, 
-//         searchedBy: req.user.id,
-//       });
-//       res.render("property", { countyTaxRecord });
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   },
-//   getBuildingInfo: async (property) => {
-//     try {
-//       const buildingPromise = new Promise((resolve, reject) => {
-//         acreApi.parcel.buildingInfo(`${property.parcelId}`, (err, building) => {
-//           if (err) {
-//             reject(err);
-//           } else {
-//             resolve(building);
-//           }
-//         });
-//       });
-//       const buildingInfo = await buildingPromise;
-//       const buildingRecord = await BuildingModel.create({
-//         useType: buildingInfo.useType,
-//         totalRooms: buildingInfo.totalRooms,
-//         basement: buildingInfo.basement,
-//         style: buildingInfo.style,
-//         bedrooms: buildingInfo.bedrooms,
-//         stories: buildingInfo.stories,
-//         yearBuilt: buildingInfo.yearBuilt,
-//         livingArea: buildingInfo.livingArea,
-//         dateSearched: req.body.id, 
-//         searchedBy: req.user.id,
-//       });
-//       res.render("property", { buildingRecord });
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
-
-// }
+}

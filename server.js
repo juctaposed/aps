@@ -25,14 +25,14 @@ connectDB();
 //Using EJS for views
 app.set("view engine", "ejs");
 
-//Static Folder
+//Serve static files from public
 app.use(express.static("public"));
 
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//Logging
+//Log HTTP requests
 app.use(logger("dev"));
 
 //Use forms for put / delete

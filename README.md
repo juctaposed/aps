@@ -31,13 +31,16 @@ would be
 
 This could be altered in the future in order to ease user experience.
 
+Note: Government buildings such as `1000 Liberty` may be missing building info, or show values as 0. This will be handled as 'N/A' at a later date.
+
 ## Lessons Learned
 
-This was a tremendous opportunity to learn more about utilizing information from user requests. I was able to create an API wrapper around Dan Wilkerson's acre-api search that grabs information from the request body to make an API call to Allegheny County's website.
+1. This was a tremendous opportunity to learn more about utilizing information from user requests. I was able to create an API wrapper around Dan Wilkerson's acre-api  that allows users to grab information about properties they are inquiring about.
 
-It was interesting working with different nested objects and properties, then figuring out how to display them to the user through EJS and HTML. 
+2. If I know what my data and given data types will look like, I'll be leaning towards using an SQL database such as Postgres. Even though MongoDB was helpful to get up and running with a prototype it's starting to prove messier than a relational database for how many connections any given property has.
 
-When planning out how I wanted to eventually manipulate data for visuals, I stumbled quite a bit with how I wanted to approach adding the required information to the database. In all, there's approximately 600,000 unique parcel IDs I would need to loop through. Instead of creating a schema for the parcels and then looping through the collection, I could have instead wrote a function to directly loop through an API call for each parcel - essentially saving the time of looping through 600k additional iterations. 
+2. When implementing the different API calls, I stumbled more than I thought I would. The original plan was to loop through the 600k unique property addresses in Allegheny, create records in the database and then respond with values when users look up an address with availability to preload data with d3.js or other visualization tooling. I somehow overlooked that, in addition to the original search, there are bonus calls for ancillary data such as tax info, building info, owner info, etc. These all take information returned from the original call as a parameter (parcel ID). Long story short - 600,000 calls quickly evolved to 3 million calls. To get up and running, the project makes live calls against Allegheny's site (for now). Moving forward I'll definitely be planning out rate limiting and caching more appropriately when dealing with large sets of data and using many API calls. 
+
 
 ## Install
 

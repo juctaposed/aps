@@ -5,8 +5,7 @@
 <div class="container overflow-hidden bg-white shadow sm:rounded-lg">
   <div class="property-container">
     <div class="px-4 py-5 sm:px-6">
-      <h3 class="text-lg font-medium leading-6 text-gray-900">Property Information for <%= property.address %></h3>
-      <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
+      <h3 class="text-lg font-medium leading-6 text-gray-900" style="text-align: center;">Property Information for<br> <%= property.address %></h3>      <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
     </div>
     <div class="border-t border-gray-200">
       <dl>
@@ -35,7 +34,7 @@
           <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.recordingDate %></dd>
         </div>
         <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Lot Area</dt>
+          <dt class="text-sm font-medium text-gray-500">Lot Area (square footage)</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= property.lotArea %></dd>
         </div>
         <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -46,165 +45,203 @@
       
       
     </dl>
-    <!-- Additional features -->
-    </br> <label for="my-modal-4" class="btn modal-button">Request Features</label>
-    <!-- Put this part before </body> tag -->
-    <input type="checkbox" id="my-modal-4" class="modal-toggle" />
-    <label for="my-modal-4" class="modal cursor-pointer">
-    <label class="modal-box relative" for="">
-      <h3 class="text-lg font-bold">Request Additional Features</h3>
-      <p class="py-4">Reach out to our team if you would like to discuss pricing for streamlining specific data or analytics</p>
-      <a href="http://localhost:2121/contact" class="py-4 fas fa-envelope me-5 text-secondary"> Contact Us</a>
-    </label>
-    </label>
-    <!-- Building Info Modal -->
-    <label for="my-modal-5" class="btn btn-outline">Building Info </label>
-    <input type="checkbox" id="my-modal-5" class="modal-toggle" />
-    <label for="my-modal-5" class="modal cursor-pointer">
+    <div class="additional-details">
+      </br> <label for="my-modal-4" class="btn modal-button">Request Features</label>
+      <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+      <label for="my-modal-4" class="modal cursor-pointer">
       <label class="modal-box relative" for="">
-        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Use Type</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= building.useType %> </dd>
-        </div>
-        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Total Rooms</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.totalRooms %></dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Basement</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.basement %></dd>
-        </div>
-        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Building Style</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.buildingStyle %></dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Bedrooms</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= building.bedrooms %> </dd>
-        </div>
-        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Total Stories</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.stories %></dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-        </div>
-        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Use Type</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= building.useType %> </dd>
-        </div>
-        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Total Rooms</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.totalRooms %></dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-        </div>
-        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Use Type</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= building.useType %> </dd>
-        </div>
-        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Total Rooms</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.totalRooms %></dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-        </div>
-        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">x</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-        </div>
+        <h3 class="text-lg font-bold">Request Additional Features</h3>
+        <p class="py-4">Reach out to our team if you would like to request custom reports for specific property information</p>
+        <a href="/contact" class="py-4 fas fa-envelope me-5 text-secondary"> Contact Us</a>
       </label>
-    </label>
-          
-          
-          <label for="my-modal-6" class="btn btn-outline">Tax Info </label>
-          <input type="checkbox" id="my-modal-6" class="modal-toggle" />
-          <label for="my-modal-6" class="modal cursor-pointer">
-            <label class="modal-box relative" for="">
-              <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> </dd>
-              </div>
-              <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
-              <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
-              <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
+      </label>
+
+
+      <label for="my-modal-5" class="btn btn-outline">Building Info</label>
+      <input type="checkbox" id="my-modal-5" class="modal-toggle" />
+      <!-- Building Info Modal -->
+      <label for="my-modal-5" class="modal cursor-pointer">
+        <label class="modal-box relative" for="">
+          <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Use Type</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= building.useType %> </dd>
+          </div>
+          <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Total Rooms</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.totalRooms %></dd>
+          </div>
+          <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Basement</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.basement %></dd>
+          </div>
+          <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Building Style</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.style %></dd>
+          </div>
+          <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Bedrooms</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= building.bedrooms %> </dd>
+          </div>
+          <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Number of Stories</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.stories %></dd>
+          </div>
+          <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Building Grade</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.grade %></dd>
+          </div>
+          <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Full Baths</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.fullBaths %></dd>
+          </div>
+          <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Half Baths</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= building.halfBaths %> </dd>
+          </div>
+          <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Fireplaces</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.fireplaces %></dd>
+          </div>
+          <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Exterior</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.exterior %></dd>
+          </div>
+          <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Roof Type</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.roof %></dd>
+          </div>
+          <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Cooling</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"> <%= building.cooling %> </dd>
+          </div>
+          <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Total Rooms</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.totalRooms %></dd>
+          </div>
+          <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Livable Square Feet</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= building.livableSquareFeet %></dd>
+          </div>
+        </label>
+      </label>
+            
+            
+            <label for="my-modal-6" class="btn btn-outline">Tax Info</label>
+            <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+            <label for="my-modal-6" class="modal cursor-pointer">
+              <label class="modal-box relative" for="">
+                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Tax Bill Address</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= countyTax.taxBillAddr %></dd>
+                </div>
+                <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Net Tax Due This Month</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= countyTax.netTaxDueThisMonth.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
+                </div>
+                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Gross Tax Due Next Month</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= countyTax.grossTaxDueNextMonth.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
+                </div>
+                <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Tax Value</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= countyTax.taxValue.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
+                </div>
+              </label>
+            </label>
+            
+            <label for="my-modal-7" class="btn btn-outline">Owner Info</label>
+            <input type="checkbox" id="my-modal-7" class="modal-toggle" />
+            <label for="my-modal-7" class="modal cursor-pointer">
+              <label class="modal-box relative" for="">
+                <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Deed Book</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= owner.deedBook %></dd>
+                </div>
+                <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Deed Page</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= owner.deedPage %></dd>
+                </div>
+
+              
+                <div style="text-align:center" class="text-lg font-large underline px-4 py-2">
+                  <p>Owner History</p>
+                </div>
+
+                <ul>
+                <% for (let i = 0; i < owner.ownerHistory.length; i++) { %>
+                    <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt class="text-sm font-medium text-gray-500"><strong>Owner</strong></dt>
+                      <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><strong><%= owner.ownerHistory[i].owner %></strong></dd>
+                    </div>
+                    <div class="bg-white-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt class="text-sm font-medium text-gray-500">Sale Date</dt>
+                      <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= owner.ownerHistory[i].saleDate.toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }) %></dd>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                      <dt class="text-sm font-medium text-gray-500">Sale Price</dt>
+                      <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= owner.ownerHistory[i].salePrice.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
+                    </div>
+                  </br>
+                  <% }; %>
+                </ul>
+              </label>
+            </label>
+
+            <label for="comparable-properties" class="btn btn-outline">Comparable Properties</label>
+            <input type="checkbox" id="comparable-properties" class="modal-toggle" />
+            <label for="comparable-properties" class="modal cursor-pointer">
+              <div class="modal-box relative">
+                  <!-- Loop thru Comps -->
+                    <ul>
+                      <!-- TODO -->
+                      <!-- Finishg writing a check if there are no comparables, nothing is currently displaying in modal -->
+
+                      <% for (let i = 0; i < comps.comps.length; i++) { %>
+                        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                          <dt class="text-sm font-medium text-gray-500"><strong>Address</strong></dt>
+                          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><strong><%= comps.comps[i].address %></strong></dd>
+                        </div>
+                        <div class="bg-white-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                          <dt class="text-sm font-medium text-gray-500">Year Built</dt>
+                          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= comps.comps[i].yearBuilt %></dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                          <dt class="text-sm font-medium text-gray-500">Parcel ID</dt>
+                          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= comps.comps[i].parcelId %></dd>
+                        </div>
+                        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                          <dt class="text-sm font-medium text-gray-500">Sale Price</dt>
+                          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= comps.comps[i].salePrice.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                          <dt class="text-sm font-medium text-gray-500">Sale Date</dt>
+                          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= comps.comps[i].saleDate %></dd>
+                        </div>
+                        <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                          <dt class="text-sm font-medium text-gray-500">Square Footage</dt>
+                          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= comps.comps[i].livableSquareFeet.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                          <dt class="text-sm font-medium text-gray-500">Land Value</dt>
+                          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= comps.comps[i].landValue.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
+                        </div>
+                        <div class="bg-white-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                          <dt class="text-sm font-medium text-gray-500">Building Value</dt>
+                          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= comps.comps[i].bldgValue.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                          <dt class="text-sm font-medium text-gray-500">Total Value</dt>
+                          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= comps.comps[i].totalValue.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
+                        </div>
+                      </br>
+                      <% }; %>
+                    </ul>
               </div>
             </label>
           </label>
-          
-          <label for="my-modal-7" class="btn btn-outline">Owner Info </label>
-          <input type="checkbox" id="my-modal-7" class="modal-toggle" />
-          <label for="my-modal-7" class="modal cursor-pointer">
-            <label class="modal-box relative" for="">
-              <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
-              <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
-              <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
-              <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
-            </label>
-          </label>
-          
-          <label for="my-modal-8" class="btn btn-outline">Comparable Properties </label>
-          <input type="checkbox" id="my-modal-8" class="modal-toggle" />
-          <label for="my-modal-8" class="modal cursor-pointer">
-            <label class="modal-box relative" for="">
-              <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
-              <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
-              <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
-              <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">x</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">y</dd>
-              </div>
-            </label>
-          </label>
-          <!-- Market values stat table -->
-          <div class="stats stats-horizontal lg:stats-horizontal shadow">
-            <div class="stat">
+    <!-- Market values stat table -->
+    <div class="stats stats-horizontal lg:flex-row flex-col shadow">
+      <div class="stat">
               <div class="land-market pt-2">Land Market Value</div>
               <div class="stat-value">$<%= property.fullMarketValues.this_year.landValue.toLocaleString({ maximumFractionDigits: 2 }) %>
               </div>
@@ -239,18 +276,7 @@
               <div class="stat-desc text-secondary">2023</div>
             </div>
           </div>
-          <!-- Put this part before </body> tag -->
-          <!-- IF USING PAGINATION -->
-          <!-- <div class="btn-group grid grid-cols-2"> -->
-            <!-- <a href="building" class="btn btn-outline" a href="building.ejs">Building Info</a> -->
-            <!-- <button class="btn btn-outline">Building Info</button>
-              <button class="btn btn-outline">Owner Info</button>
-              <button class="btn btn-outline">Tax Info </button>
-              <button class="btn btn-outline">Comparable Properties</button>
-            </div> -->
-            
-            <!-- </dl> -->
-          </div>
         </div>
+      </div>
         
 <%- include('partials/footer') -%>
