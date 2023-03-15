@@ -1,17 +1,24 @@
 const mongoose = require("mongoose");
 
-const taxHistorySchema = new mongoose.Schema({
-  paidStatus: { type: String, required: true },
-  tax: { type: Number, required: true },
-  penalty: { type: Number, required: true },
-  interest: { type: Number, required: true },
-  total: { type: Number, required: true },
-  datePaid: { type: String, required: true }
-});
+// const taxHistorySchema = new mongoose.Schema({
+//   paidStatus: { type: String, required: true },
+//   tax: { type: Number, required: true },
+//   penalty: { type: Number, required: true },
+//   interest: { type: Number, required: true },
+//   total: { type: Number, required: true },
+//   datePaid: { type: String, required: true }
+// });
 
 const taxHistoryYearSchema = new mongoose.Schema({
-  [String]: taxHistorySchema
-});
+  
+    paidStatus: { type: String },
+    tax: { type: Number },
+    penalty: { type: Number },
+    interest: { type: Number },
+    total: { type: Number },
+    datePaid: { type: String }
+    
+}); 
 
 const CountyTaxModel = new mongoose.Schema({
     parcelId: {type: String},
