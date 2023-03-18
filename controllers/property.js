@@ -5,6 +5,7 @@ const CompsModel = require("../models/Comp")
 const OwnerModel = require("../models/Owner")
 const acreApi = require('acre-api');
 const local_millage_json = require("../data/localTax2022.json");
+const school_millage_json = require("../data/schoolTax2022.json");
 
 module.exports  = {
 
@@ -169,11 +170,19 @@ module.exports  = {
       const municipality_pattern = /\d+\s*(.*)/;
       const match = property.municipality.match(municipality_pattern);
       const municipalityMatch = match[1];
-
+      
+      console.log(`County Millage: ${countyTaxInfo.millageRate}`)
       for (const record of local_millage_json) {
         if (record["Municipality"].includes(municipalityMatch)) {
           const millage_value = record['Millage'];
-          console.log(`Millage value: ${millage_value}`);
+          console.log(`Local Millage: ${millage_value}`);
+          break;
+        }
+      }
+      for (const record of school_millage_json) {
+        if (record["Municipality"].includes(municipalityMatch)) {
+          const millage_value = record['Millage'];
+          console.log(`School Millage: ${millage_value}`);
           break;
         }
       }
