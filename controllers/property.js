@@ -4,6 +4,7 @@ const CountyTaxModel = require("../models/CountyTax")
 const CompsModel = require("../models/Comp")
 const OwnerModel = require("../models/Owner")
 const acreApi = require('acre-api');
+const local_millage_json = require("../data/localTax2022.json");
 
 module.exports  = {
 
@@ -36,6 +37,7 @@ module.exports  = {
             res.locals.property = result;
           console.log(result.address)
           console.log(result.countyAssessedValues)
+          
           if (!result.address) {
             return res.render("property", {
               property: null,
@@ -163,11 +165,34 @@ module.exports  = {
           console.log(ownerDetails, ownerInfo.owner[ownerDetails]);
         }
       }
+      // Connect Millage JSON to searched property
+      const municipality_pattern = /\d+\s*(.*)/;
+      const match = property.municipality.match(municipality_pattern);
+      const municipalityMatch = match[1];
+
+      for (const record of local_millage_json) {
+        if (record["Municipality"].includes(municipalityMatch)) {
+          const millage_value = record['Millage'];
+          console.log(`Millage value: ${millage_value}`);
+          break;
+        }
+      }
 
       res.render("property");
     })
     } catch (err) {
       console.log(err)
+    }
+  },
+  millageRates: async (req, res) => {
+    const local_millage_json = require("../data/localTax2022.json");
+    // const school_millage_json = require("../data/schoolTax2022.json");
+
+    for (const record of local_millage_json) {
+      if(record['Municipality'].includes(property.municipality)) {
+        const millage_value = record['Millage'];
+        console.log(`Millage value: ${millage_value}`);
+      }
     }
   }
 }
