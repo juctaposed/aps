@@ -1,0 +1,919 @@
+[
+    {
+      "Municipality": "Allegheny County",
+      "Tax Collector": "John K. Weinstein",
+      "Phone": "412-350-4120",
+      "Millage": 4.73,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Aleppo Township",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-5243",
+      "Millage": 3.5,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Aspinwall Borough",
+      "Tax Collector": "Dawn E Eastley",
+      "Phone": "412-781-0213",
+      "Millage": 6.86,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Avalon Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "724-731-2311",
+      "Millage": 9.83,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Baldwin Borough",
+      "Tax Collector": "Gail Dobson-Mikush",
+      "Phone": "412-884-0803",
+      "Millage": 6.78,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Baldwin Township",
+      "Tax Collector": "Judith Maffie",
+      "Phone": "412-341-9597",
+      "Millage": 9.8,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Bell Acres Borough",
+      "Tax Collector": "Gregg Cooper",
+      "Phone": "412-418-4746",
+      "Millage": 4.32,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Bellevue Borough",
+      "Tax Collector": "Joseph P Nolan",
+      "Phone": "412-766-6164",
+      "Millage": 4.89,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Ben Avon Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-5243",
+      "Millage": 4.92,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Ben Avon Heights Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "724-731-2300",
+      "Millage": 7.95,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Bethel Park 3",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-7676",
+      "Millage": 2.78,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Blawnox Borough",
+      "Tax Collector": "Casey Cunningham",
+      "Phone": "412-499-2086",
+      "Millage": 9.85,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Brackenridge Borough",
+      "Tax Collector": "Melinda Cattley",
+      "Phone": "724-904-7455",
+      "Millage": 6.25,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Braddock Borough",
+      "Tax Collector": "David Rosenstraus",
+      "Phone": "412-271-1018",
+      "Millage": 13.65,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Braddock Hills Borough",
+      "Tax Collector": "Betty Ann Horvath",
+      "Phone": "412-241-5080",
+      "Millage": 8.205,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Bradford Woods Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "724-731-2300",
+      "Millage": 3.375,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Brentwood Borough",
+      "Tax Collector": "Fay Boland",
+      "Phone": "412-882-5383x1117",
+      "Millage": 10,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Bridgeville Borough",
+      "Tax Collector": "Anne Marie Parisi",
+      "Phone": "412-221-6055",
+      "Millage": 8.25,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Carnegie Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-5243",
+      "Millage": 7,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Castle Shannon Borough",
+      "Tax Collector": "Eileen L O'Malley",
+      "Phone": "412-885-9260",
+      "Millage": 9.658,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Chalfant Borough",
+      "Tax Collector": "Carol A. Donahue",
+      "Phone": "412-824-3283",
+      "Millage": 8.9,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Cheswick Borough 5",
+      "Tax Collector": "Louise Parkhill",
+      "Phone": "724-275-7722",
+      "Millage": 5.85,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Churchill Borough",
+      "Tax Collector": "Keystone Collections Group",
+      "Phone": "412-241-7113",
+      "Millage": 8,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "City of Clairton 1",
+      "Tax Collector": "Howard J Bednar",
+      "Phone": "412-233-8113",
+      "Millage": 33,
+      "Land 1": 3.5
+    },
+    {
+      "Municipality": "City of Duquesne 1",
+      "Tax Collector": "City of Duquesne",
+      "Phone": "412-466-8545",
+      "Millage": 20.5,
+      "Land 1": 15.5
+    },
+    {
+      "Municipality": "City of McKeesport 1",
+      "Tax Collector": "City Treasurer",
+      "Phone": "412-675-5020",
+      "Millage": 20.5,
+      "Land 1": 8.26
+    },
+    {
+      "Municipality": "City of Pittsburgh",
+      "Tax Collector": "City of Pittsburgh",
+      "Phone": "412-255-2525",
+      "Millage": 8.06,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Collier Township",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-5243",
+      "Millage": 4.1,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Coraopolis Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-5243",
+      "Millage": 12.5,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Crafton Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-5243",
+      "Millage": 8.59,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Crescent Township 3",
+      "Tax Collector": "Morgan Withee",
+      "Phone": "724-457-1320",
+      "Millage": 4.9,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Dormont Borough",
+      "Tax Collector": "Vickie McGurk",
+      "Phone": "412-561-8900",
+      "Millage": 9.97,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Dravosburg Borough",
+      "Tax Collector": "Charles Gross",
+      "Phone": "412-469-0743",
+      "Millage": 7.55,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "East Deer Township",
+      "Tax Collector": "Bernadette Paulovich",
+      "Phone": "412-829-7991",
+      "Millage": 4.9,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "East McKeesport Borough",
+      "Tax Collector": "Robert Ferrainolo",
+      "Phone": "412-829-7991",
+      "Millage": 9.4,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "East Pittsburgh Borough",
+      "Tax Collector": "Patrick Geric",
+      "Phone": "412-823-4046",
+      "Millage": 13.45,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Edgewood Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-5243",
+      "Millage": 7.185,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Edgeworth Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-5243",
+      "Millage": 4.15,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Elizabeth Borough",
+      "Tax Collector": "Robin Schmidt",
+      "Phone": "412-384-7771",
+      "Millage": 10,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Elizabeth Township 3",
+      "Tax Collector": "Mary Walos",
+      "Phone": "412-751-2880",
+      "Millage": 3.926,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Emsworth Borough",
+      "Tax Collector": "Laura West",
+      "Phone": "412-734-4714",
+      "Millage": 4.955,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Etna Borough",
+      "Tax Collector": "Karen Tomaszewski",
+      "Phone": "412-781-6417",
+      "Millage": 9,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Fawn Township",
+      "Tax Collector": "Margaret Hunkele",
+      "Phone": "724-226-0666",
+      "Millage": 3.04,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Findlay Township",
+      "Tax Collector": "Barbara Coates",
+      "Phone": "724-695-0521",
+      "Millage": 1.6,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Forest Hills Borough",
+      "Tax Collector": "Janet Sullivan",
+      "Phone": "412-351-7348",
+      "Millage": 8,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Forward Township",
+      "Tax Collector": "William Firczak",
+      "Phone": "412-384-2321",
+      "Millage": 1.95,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Fox Chapel Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-345-7962",
+      "Millage": 2.95,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Franklin Park Borough",
+      "Tax Collector": "Kristin Losco",
+      "Phone": "412-364-4115",
+      "Millage": 1.29,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Frazer Township",
+      "Tax Collector": "Debra Bajack",
+      "Phone": "724-224-8971",
+      "Millage": 2.5,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Glassport Borough",
+      "Tax Collector": "Jennifer Bell",
+      "Phone": "412-664-7310",
+      "Millage": 15.49,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Glen Osborne Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "724-731-2319",
+      "Millage": 4.9,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Glenfield Borough",
+      "Tax Collector": "Sandra Kuriger",
+      "Phone": "412-741-9473",
+      "Millage": 4.15,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Green Tree Borough",
+      "Tax Collector": "W David Montz",
+      "Phone": "412-921-1110",
+      "Millage": 4.61,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Hampton Township",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "724-731-2300",
+      "Millage": 2.9241,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Harmar Township",
+      "Tax Collector": "James DiPalma",
+      "Phone": "724-274-4550",
+      "Millage": 3.15,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Harrison Township",
+      "Tax Collector": "Michael D McKechnie",
+      "Phone": "724-226-1393",
+      "Millage": 5.106,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Haysville Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-5243",
+      "Millage": 5.08,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Heidelberg Borough",
+      "Tax Collector": "Nathaniel Jackson",
+      "Phone": "412-276-5653",
+      "Millage": 7.95,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Homestead Borough 5",
+      "Tax Collector": "Alice Paylor-Dais",
+      "Phone": "412-461-1340 x102",
+      "Millage": 13.33,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Indiana Township",
+      "Tax Collector": "Julie Leventry",
+      "Phone": "412-767-5333",
+      "Millage": 3.47,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Ingram Borough",
+      "Tax Collector": "Tax Office",
+      "Phone": "412-922-5877",
+      "Millage": 5.9,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Jefferson Hills Borough",
+      "Tax Collector": "Josephine Lipnicky",
+      "Phone": "412-226-2230",
+      "Millage": 5.66,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Kennedy Township",
+      "Tax Collector": "Mel Weinstein",
+      "Phone": "412-771-3616",
+      "Millage": 2.35,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Kilbuck Township",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-5243",
+      "Millage": 4.9,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Leet Township",
+      "Tax Collector": "Cindy Wanto",
+      "Phone": "724-266-2280",
+      "Millage": 7.7,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Leetsdale Borough",
+      "Tax Collector": "Phil Perciavalle",
+      "Phone": "412-741-3195",
+      "Millage": "9",
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Liberty Borough",
+      "Tax Collector": "Shelley Aquilante",
+      "Phone": "412-896-7408",
+      "Millage": 8,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Lincoln Borough",
+      "Tax Collector": "Sharon Jageman",
+      "Phone": "412-751-2655",
+      "Millage": 9,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Marshall Township",
+      "Tax Collector": "Charles Carey",
+      "Phone": "724-772-2470",
+      "Millage": 1.42,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "McCandless Township",
+      "Tax Collector": "Judith M Wagner",
+      "Phone": "412-364-0616",
+      "Millage": 1.236,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "McDonald Borough 2",
+      "Tax Collector": "John B Bracall",
+      "Phone": "412-351-5500",
+      "Millage": 3.39,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "McKees Rocks Borough",
+      "Tax Collector": "Tracy Pederson",
+      "Phone": "412-331-2498",
+      "Millage": 9.4,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Millvale Borough",
+      "Tax Collector": "Scott Davis",
+      "Phone": "412-418-6425",
+      "Millage": 9.5,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Monroeville Municipality",
+      "Tax Collector": "Patrick Fulkerson",
+      "Phone": "412-856-3348",
+      "Millage": 4,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Moon Township",
+      "Tax Collector": "Catherine Tress",
+      "Phone": "412-299-7446",
+      "Millage": 2.74,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Mount Lebanon",
+      "Tax Collector": "Joseph Senko",
+      "Phone": "412-343-3405",
+      "Millage": 4.91,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Mount Oliver Borough",
+      "Tax Collector": "Tina Carcia",
+      "Phone": "412-431-8107",
+      "Millage": 13.5,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Munhall Borough",
+      "Tax Collector": "Donna Mercuri",
+      "Phone": "412-464-7315",
+      "Millage": 10.75,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Neville Township",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "724-731-2300",
+      "Millage": 4.95,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "North Braddock Borough",
+      "Tax Collector": "Kathleen M Evanchec",
+      "Phone": "412-351-5500",
+      "Millage": 11,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "North Fayette Township",
+      "Tax Collector": "Thomas Falcioni",
+      "Phone": "724-693-3116",
+      "Millage": 3.29,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "North Versailles Township",
+      "Tax Collector": "Mary Ann Fetsick",
+      "Phone": "412-824-6616",
+      "Millage": 7.75,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "O'Hara Township",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-5243",
+      "Millage": 5,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Oakdale Borough",
+      "Tax Collector": "Dawn Ostrander",
+      "Phone": "724-693-9397",
+      "Millage": 3.73,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Oakmont Borough",
+      "Tax Collector": "Pa Municipal Tax",
+      "Phone": "412-826-0300",
+      "Millage": 2.1,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Ohio Township",
+      "Tax Collector": "Kristen Pontello",
+      "Phone": "412-528-4858",
+      "Millage": 3.09,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Penn Hills Township",
+      "Tax Collector": "Keystone Collections Group",
+      "Phone": "412-793-7063",
+      "Millage": 6.444,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Pennsbury Village",
+      "Tax Collector": "Patricia Notaro",
+      "Phone": "412-276-6181",
+      "Millage": 6.2,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Pine Township",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "724-731-2315",
+      "Millage": 0.998,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Pitcairn Borough",
+      "Tax Collector": "Sally DiRobbio",
+      "Phone": "412-372-3009",
+      "Millage": 9.25,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Pleasant Hills Borough",
+      "Tax Collector": "Linda Fancsali",
+      "Phone": "412-653-6321",
+      "Millage": 7.75,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Plum Borough",
+      "Tax Collector": "Lisa A. Lagnese",
+      "Phone": "412-795-4600",
+      "Millage": 4.78,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Port Vue Borough",
+      "Tax Collector": "Lori DiMarco",
+      "Phone": "412-664-9323",
+      "Millage": 8.4,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Rankin Borough",
+      "Tax Collector": "Sheila Miles",
+      "Phone": "412-271-6605",
+      "Millage": 9.6928,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Reserve Township",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "724-731-2311",
+      "Millage": 5.47,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Richland Township",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "724-731-2315",
+      "Millage": 2.69,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Robinson Township",
+      "Tax Collector": "Michael Pendel",
+      "Phone": "412-788-8120",
+      "Millage": 3.2,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Ross Township",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-5243",
+      "Millage": 2.7,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Rosslyn Farms Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "724-731-2300",
+      "Millage": 8,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Scott Township",
+      "Tax Collector": "Lisa Riley",
+      "Phone": "412-276-5302",
+      "Millage": 5.1711,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Sewickley Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "724-731-2319",
+      "Millage": 6.25,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Sewickley Heights Borough",
+      "Tax Collector": "Nathan A. Briggs",
+      "Phone": "412-741-5119",
+      "Millage": 5.5,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Sewickley Hills Borough",
+      "Tax Collector": "Doug Nolfi",
+      "Phone": "412-741-7734",
+      "Millage": 2.84,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Shaler Township",
+      "Tax Collector": "Erin Bartkins",
+      "Phone": "412-486-9700 x224",
+      "Millage": 3.49,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Sharpsburg Borough 3",
+      "Tax Collector": "Patricia Hyatt",
+      "Phone": "412-781-7749",
+      "Millage": 8.25,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "South Fayette Township",
+      "Tax Collector": "Kevin P Biber",
+      "Phone": "412-221-8700",
+      "Millage": 4.73,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "South Park Township",
+      "Tax Collector": "Lawrence Arrigo",
+      "Phone": "412-833-8292",
+      "Millage": 3.062,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "South Versailles Township",
+      "Tax Collector": "Sherry Kahler",
+      "Phone": "412-754-2536",
+      "Millage": 2.9,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Springdale Borough",
+      "Tax Collector": "Deborah Sigmund",
+      "Phone": "724-274-6269",
+      "Millage": 8.25,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Springdale Township",
+      "Tax Collector": "Kathryn Winwood",
+      "Phone": "724-274-4416",
+      "Millage": 6.5,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Stowe Township",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "724-731-2311",
+      "Millage": 10.48,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Swissvale Borough",
+      "Tax Collector": "Thomas Barr",
+      "Phone": "412-351-3342",
+      "Millage": 8,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Tarentum Borough",
+      "Tax Collector": "Karen Marietti",
+      "Phone": "724-224-1179",
+      "Millage": 5.48,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Thornburg Borough",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "724-731-2300",
+      "Millage": 6.6,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Trafford Borough 2",
+      "Tax Collector": "James Kerrigan",
+      "Phone": "412-372-5361",
+      "Millage": 31.5,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Turtle Creek Borough",
+      "Tax Collector": "Richard Smith",
+      "Phone": "412-824-1835",
+      "Millage": 9.5,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Upper St. Clair Township",
+      "Tax Collector": "Jordan Tax Service",
+      "Phone": "412-835-5243",
+      "Millage": 3.83,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Verona Borough",
+      "Tax Collector": "Keystone Collections Group",
+      "Phone": "724-978-0300",
+      "Millage": 9.7,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Versailles Borough",
+      "Tax Collector": "Charisse Richards",
+      "Phone": "412-896-1632",
+      "Millage": 8,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Wall Borough",
+      "Tax Collector": "Melissa Swidorsky",
+      "Phone": "412-824-3333",
+      "Millage": 7.22,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "West Deer Township",
+      "Tax Collector": "Dorothy Bonovitz",
+      "Phone": "724-265-4250",
+      "Millage": 2.99,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "West Elizabeth Borough",
+      "Tax Collector": "Robert N Welty",
+      "Phone": "412-384-7247",
+      "Millage": 4.55,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "West Homestead Borough",
+      "Tax Collector": "Lisa Guckes",
+      "Phone": "412-461-1844",
+      "Millage": 8.8,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "West Mifflin Borough",
+      "Tax Collector": "Jonathan Hess",
+      "Phone": "412-466-8177",
+      "Millage": 9.98,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "West View Borough",
+      "Tax Collector": "Rita A Schwarzmeier",
+      "Phone": "412-931-1633",
+      "Millage": 6.3,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Whitaker Borough",
+      "Tax Collector": "Patricia Pasquiantonio",
+      "Phone": "412-464-1199",
+      "Millage": 10.5,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "White Oak Borough",
+      "Tax Collector": "Lisa Pitchford",
+      "Phone": "412-678-0437",
+      "Millage": 8,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Whitehall Borough",
+      "Tax Collector": "Kelly Sgattoni",
+      "Phone": "412-881-1644",
+      "Millage": 4.42,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Wilkins Township",
+      "Tax Collector": "George M Porado",
+      "Phone": "412-824-6891",
+      "Millage": 6.174,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Wilkinsburg Borough",
+      "Tax Collector": "Berkheimer Tax",
+      "Phone": "610-588-0965",
+      "Millage": 14,
+      "Land 1": ""
+    },
+    {
+      "Municipality": "Wilmerding Borough",
+      "Tax Collector": "Frank J. Tylka",
+      "Phone": "412-823-4421",
+      "Millage": 13,
+      "Land 1": ""
+    }
+  ]
