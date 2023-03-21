@@ -31,7 +31,7 @@ would be
 
 This could be altered in the future in order to ease user experience.
 
-Note: Government buildings such as `1000 Liberty` may be missing building info, or show values as 0. This will be handled as 'N/A' at a later date.
+Note: Government buildings will display a lot of `0` and `N/A` values. They are exempt from taxes, and additionally may be considered confidential or privileged. Privately owned businesses may also non-values, though typically only regarding some building details, not tax details since they are not tax exempt.
 
 ## Lessons Learned
 
