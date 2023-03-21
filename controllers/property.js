@@ -4,6 +4,8 @@ const CountyTaxModel = require("../models/CountyTax")
 const CompsModel = require("../models/Comp")
 const OwnerModel = require("../models/Owner")
 const acreApi = require('acre-api');
+const local_millage_json = require("../data/localTax2022.json");
+const school_millage_json = require("../data/schoolTax2022.json");
 
 module.exports  = {
 
@@ -36,6 +38,7 @@ module.exports  = {
             res.locals.property = result;
           console.log(result.address)
           console.log(result.countyAssessedValues)
+          
           if (!result.address) {
             return res.render("property", {
               property: null,
@@ -103,8 +106,7 @@ module.exports  = {
       res.locals.building = buildingRecord;
       console.log('building info: ', buildingRecord)
       
-      // TODO
-      // Pass tax history to mongoDB to instantiate the nested props in DB
+      
       const countyTaxRecord = await CountyTaxModel.create({
         parcelId: countyTaxInfo.parcelId,
         municipality: countyTaxInfo.municpality,
@@ -173,6 +175,37 @@ module.exports  = {
           console.log(ownerDetails, ownerInfo.owner[ownerDetails]);
         }
       }
+      // Connect Millage JSON to Municipality of searched property
+      const municipality_pattern = /\d+\s*(.*)/;
+      const match = property.municipality.match(municipality_pattern);
+      const municipalityMatch = match[1];
+
+      console.log(`County Millage: ${countyTaxInfo.millageRate}`)
+      console.log(`Yearly county tax due: ${property.countyAssessedValues.this_year.totalValue * (countyTaxInfo.millageRate / 1000)}`)
+      
+
+      for (const record of local_millage_json) {
+        if (record["Municipality"].includes(municipalityMatch)) {
+          const millage_value = record['Millage'];
+          console.log(`Local Millage: ${millage_value}`);
+          console.log(`Yearly local tax due: ${property.countyAssessedValues.this_year.totalValue * (millage_value / 1000)}`)
+          console.log(`Monthly local tax due: ${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12)}`)
+          break;
+        }
+      }
+      for (const record of school_millage_json) {
+        if (record["Municipality"].includes(municipalityMatch)) {
+          const millage_value = record['Millage'];
+          console.log(`School Millage: ${millage_value}`);
+          console.log(`Yearly school tax due: ${property.countyAssessedValues.this_year.totalValue * (millage_value / 1000)}`)
+          console.log(`Monthly school tax due: ${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12)}`)
+          break;
+        }
+      }
+
+      // TODO
+      //Display both yearly and monthly taxes due for each property tax
+      // Property Tax = Assessed Value x (Millage Rate / 1000)
 
       res.render("property");
     })
