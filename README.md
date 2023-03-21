@@ -10,7 +10,7 @@
 
 This is a simple user interface that allows users to search for detailed property information from buildings in Allegheny County. 
 
-**Website:** https://allegheny-property-search.up.railway.app/
+**Website:** https://aps.cyclic.app/
 ![](https://github.com/juctaposed/aps/blob/main/public/imgs/apsDemo.gif)
 
 ## Optimizations
@@ -59,4 +59,4 @@ Note: Government buildings will display a lot of `0` and `N/A` values. They are 
 
 ## Run
 
-`npm start`
+`npm run start`
