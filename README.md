@@ -26,7 +26,7 @@ I pushed for an MVP that provides basic functionality of displaying useful prope
 - Currently when completing the form to search for a property, substrings such as "Street", "Road", or any synonyms thereof must be left off. E.g.
 
 `1000 Liberty Avenue`
-would be 
+should be input as  
 `1000 Liberty`
 
 This could be altered in the future in order to ease user experience.
