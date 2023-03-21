@@ -1,0 +1,272 @@
+[
+  {
+    "School District": "Allegheny Valley",
+    "Municipality": "Cheswick Borough, Harmar Township, Springdale Borough, Springdale Township,",
+    "Millage": 20.8377,
+    "Land": ""
+  },
+  {
+    "School District": "Avonworth",
+    "Municipality": "Ben Avon Borough, Ben Avon Heights Borough, Emsworth Borough, Kilbuck Township, Ohio Township,",
+    "Millage": 20.19,
+    "Land": ""
+  },
+  {
+    "School District": "Baldwin-Whitehall",
+    "Municipality": "Baldwin Borough, Baldwin Township, Whitehall Borough,",
+    "Millage": 23,
+    "Land": ""
+  },
+  {
+    "School District": "Bethel Park",
+    "Municipality": "Bethel Park,",
+    "Millage": 23.4281,
+    "Land": ""
+  },
+  {
+    "School District": "Brentwood",
+    "Municipality": "Brentwood Borough,",
+    "Millage": 35.7905,
+    "Land": ""
+  },
+  {
+    "School District": "Carlynton",
+    "Municipality": "Carnegie Borough, Crafton Borough, Rosslyn Farms Borough,",
+    "Millage": 26.7432,
+    "Land": ""
+  },
+  {
+    "School District": "Chartiers Valley",
+    "Municipality": "Bridgeville Borough, Collier Township, Heidelberg Borough, Scott Township,",
+    "Millage": 19.3957,
+    "Land": ""
+  },
+  {
+    "School District": "Clairton",
+    "Municipality": "City of Clairton,",
+    "Millage": 8.126,
+    "Land": 87.0653
+  },
+  {
+    "School District": "Cornell",
+    "Municipality": "Coraopolis Borough, Neville Township,",
+    "Millage": 25.107,
+    "Land": ""
+  },
+  {
+    "School District": "Deer Lakes",
+    "Municipality": "East Deer Township, Frazer Township, West Deer Township,",
+    "Millage": 22.69,
+    "Land": ""
+  },
+  {
+    "School District": "Duquesne Area",
+    "Municipality": "City of Duquesne,",
+    "Millage": 18.48,
+    "Land": ""
+  },
+  {
+    "School District": "East Allegheny",
+    "Municipality": "East McKeesport Borough, North Versailles Township, Wall Borough, Wilmerding Borough,",
+    "Millage": 26.9722,
+    "Land": ""
+  },
+  {
+    "School District": "Elizabeth-Forward",
+    "Municipality": "Elizabeth Borough, Elizabeth Township, Forward Township,",
+    "Millage": 26.3243,
+    "Land": ""
+  },
+  {
+    "School District": "Fox Chapel Area",
+    "Municipality": "Aspinwall Borough, Blawnox Borough, Fox Chapel Borough, Indiana Township, O'Hara Township, Sharpsburg Borough,",
+    "Millage": 20.4288,
+    "Land": ""
+  },
+  {
+    "School District": "Gateway",
+    "Municipality": "Monroeville Municipality, Pitcairn Borough,",
+    "Millage": 21.7479,
+    "Land": ""
+  },
+  {
+    "School District": "Hampton",
+    "Municipality": "Hampton Township,",
+    "Millage": 20.99,
+    "Land": ""
+  },
+  {
+    "School District": "Highlands",
+    "Municipality": "Brackenridge Borough, Fawn Township, Harrison Township, Tarentum Borough,",
+    "Millage": 25.13,
+    "Land": ""
+  },
+  {
+    "School District": "Keystone Oaks",
+    "Municipality": "Castle Shannon Borough, Dormont Borough, Green Tree Borough,",
+    "Millage": 20.4856,
+    "Land": ""
+  },
+  {
+    "School District": "McKeesport Area",
+    "Municipality": "Dravosburg Borough, City of McKeesport, South Versailles Township, Versailles Borough, White Oak Borough,",
+    "Millage": 20.96,
+    "Land": ""
+  },
+  {
+    "School District": "Montour",
+    "Municipality": "Ingram Borough, Kennedy Township, Pennsbury Village, Robinson Township, Thornburg Borough,",
+    "Millage": 17.9638,
+    "Land": ""
+  },
+  {
+    "School District": "Moon Area",
+    "Municipality": "Crescent Township, Moon Township,",
+    "Millage": 22.6746,
+    "Land": ""
+  },
+  {
+    "School District": "Mt. Lebanon",
+    "Municipality": "Mount Lebanon,",
+    "Millage": 26.39,
+    "Land": ""
+  },
+  {
+    "School District": "North Allegheny",
+    "Municipality": "Bradford Woods Borough, Franklin Park Borough, Marshall Township, McCandless Township,",
+    "Millage": 19.74,
+    "Land": ""
+  },
+  {
+    "School District": "North Hills",
+    "Municipality": "Ross Township, West View Borough,",
+    "Millage": 19.7,
+    "Land": ""
+  },
+  {
+    "School District": "Northgate",
+    "Municipality": "Avalon Borough, Bellevue Borough,",
+    "Millage": 27.32,
+    "Land": ""
+  },
+  {
+    "School District": "Penn Hills",
+    "Municipality": "Penn Hills Township,",
+    "Millage": 30.5965,
+    "Land": ""
+  },
+  {
+    "School District": "Pine-Richland",
+    "Municipality": "Pine Township, Richland Township,",
+    "Millage": 19.5867,
+    "Land": ""
+  },
+  {
+    "School District": "Pittsburgh",
+    "Municipality": "Mount Oliver Borough, City of Pittsburgh,",
+    "Millage": 10.25,
+    "Land": ""
+  },
+  {
+    "School District": "Plum",
+    "Municipality": "Plum Borough,",
+    "Millage": 22.0241,
+    "Land": ""
+  },
+  {
+    "School District": "Quaker Valley",
+    "Municipality": "Aleppo Township, Bell Acres Borough, Edgeworth Borough, Glenfield Borough, Haysville Borough, Leet Township, Leetsdale Borough, Glen Osborne Borough, Sewickley Borough, Sewickley Heights Borough, Sewickley Hills Borough",
+    "Millage": 20.0367,
+    "Land": ""
+  },
+  {
+    "School District": "Riverview",
+    "Municipality": "Oakmont Borough, Verona Borough,",
+    "Millage": 23.6675,
+    "Land": ""
+  },
+  {
+    "School District": "Shaler Area",
+    "Municipality": "Etna Borough, Millvale Borough, Reserve Township, Shaler Township,",
+    "Millage": 23.5319,
+    "Land": ""
+  },
+  {
+    "School District": "South Allegheny",
+    "Municipality": "Glassport Borough, Liberty Borough, Lincoln Borough, Port Vue Borough,",
+    "Millage": 23.5,
+    "Land": ""
+  },
+  {
+    "School District": "South Fayette",
+    "Municipality": "South Fayette Township,",
+    "Millage": 26.7,
+    "Land": ""
+  },
+  {
+    "School District": "South Park",
+    "Municipality": "South Park Township,",
+    "Millage": 26.7,
+    "Land": ""
+  },
+  {
+    "School District": "Steel Valley",
+    "Municipality": "Homestead Borough, Munhall Borough, West Homestead Borough,",
+    "Millage": 25.96,
+    "Land": ""
+  },
+  {
+    "School District": "Sto-Rox",
+    "Municipality": "McKees Rocks Borough, Stowe Township,",
+    "Millage": 26.325,
+    "Land": ""
+  },
+  {
+    "School District": "Upper St. Clair",
+    "Municipality": "Upper St. Clair Township,",
+    "Millage": 28.5628,
+    "Land": ""
+  },
+  {
+    "School District": "West Allegheny",
+    "Municipality": "Findlay Township, North Fayette Township, Oakdale Borough,",
+    "Millage": 18.51,
+    "Land": ""
+  },
+  {
+    "School District": "West Jefferson",
+    "Municipality": "Jefferson Hills Borough, Pleasant Hills Borough, West Elizabeth Borough,",
+    "Millage": 22.773,
+    "Land": ""
+  },
+  {
+    "School District": "West Mifflin Area",
+    "Municipality": "West Mifflin Borough, Whitaker Borough,",
+    "Millage": 26.5691,
+    "Land": ""
+  },
+  {
+    "School District": "Wilkinsburg",
+    "Municipality": "Wilkinsburg Borough,",
+    "Millage": 24.5,
+    "Land": ""
+  },
+  {
+    "School District": "Woodland Hills",
+    "Municipality": "Braddock Borough, Braddock Hills Borough, Chalfant Borough, Churchill Borough, East Pittsburgh Borough, Edgewood Borough, Forest Hills Borough, North Braddock Borough, Rankin Borough, Swissvale Borough, Turtle Creek Borough",
+    "Millage": 26.9982,
+    "Land": ""
+  },
+  {
+    "School District": "Fort Cherry",
+    "Municipality": "McDonald Borough,",
+    "Millage": 14.0258,
+    "Land": ""
+  },
+  {
+    "School District": "Penn-Trafford",
+    "Municipality": "Trafford Borough,",
+    "Millage": 14.01,
+    "Land": ""
+  }
+]
