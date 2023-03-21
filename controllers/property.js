@@ -44,6 +44,16 @@ module.exports  = {
               comps: null,
             });
           }
+          // Assuming that the address is stored in a variable called 'address'
+          let formattedAddress = property.address.toLowerCase() // Convert to lowercase
+            .replace(/\b[a-z]/g, (letter) => letter.toUpperCase()) // Capitalize the first letter of each word
+            .replace(/(\d+)\s+(.+),\s+([a-z]{2})\s+(\d{5})/i, (match, number, street, state, zip) => `${number} ${street.trim().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} ${state.toUpperCase()}, ${zip}`); // Swap the state and zip code, and add a comma between the city and state
+          formattedAddress = formattedAddress.replace(/(\d+)\s+(.+),/, (match, number, street) =>
+            `${number} ${street.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')},`
+          );
+
+          console.log("formatted address: ", formattedAddress); // Output: 771 Lebanon Ave Pittsburgh, PA 15228
+          res.locals.formattedAddress = formattedAddress;
         }
       const buildingInfoPromise = new Promise((resolve, reject) => {
         acreApi.parcel.buildingInfo(`${property.parcelId}`, (err, building) => {
