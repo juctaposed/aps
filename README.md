@@ -59,4 +59,4 @@ Note: Government buildings will display a lot of `0` and `N/A` values. They are 
 
 ## Run
 
-`npm start`
+`npm run start`
