@@ -39,15 +39,25 @@ module.exports  = {
           console.log(result.address)
           console.log(result.countyAssessedValues)
           
-          if (!result.address) {
-            return res.render("property", {
-              property: null,
-              building: null,
-              countyTax: null,
-              comps: null,
-            });
+          try {
+            if (!result.address) {
+              throw new Error("Address not found in result object");
+            }
+          } catch (err) {
+            console.error(err.message);
+            res.status(500).send("Internal Server Error");
           }
-          // Assuming that the address is stored in a variable called 'address'
+          
+          // if (!result.address) {
+          //   return res.render("property", {
+          //     property: null,
+          //     building: null,
+          //     countyTax: null,
+          //     comps: null,
+          //   });
+          // }
+
+          // Format "showing property detail for" address
           let formattedAddress = property.address.toLowerCase() // Convert to lowercase
             .replace(/\b[a-z]/g, (letter) => letter.toUpperCase()) // Capitalize the first letter of each word
             .replace(/(\d+)\s+(.+),\s+([a-z]{2})\s+(\d{5})/i, (match, number, street, state, zip) => `${number} ${street.trim().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} ${state.toUpperCase()}, ${zip}`); // Swap the state and zip code, and add a comma between the city and state
@@ -55,9 +65,10 @@ module.exports  = {
             `${number} ${street.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')},`
           );
 
-          console.log("formatted address: ", formattedAddress); // Output: 771 Lebanon Ave Pittsburgh, PA 15228
+          console.log("formatted address: ", formattedAddress); 
           res.locals.formattedAddress = formattedAddress;
         }
+        
       const buildingInfoPromise = new Promise((resolve, reject) => {
         acreApi.parcel.buildingInfo(`${property.parcelId}`, (err, building) => {
           if(err) { reject(err); } else { resolve(building); }  });
@@ -180,29 +191,39 @@ module.exports  = {
       const match = property.municipality.match(municipality_pattern);
       const municipalityMatch = match[1];
 
+      const municipalityParts = municipalityMatch.split(/[-.]/); // Split the municipality string based on '-' and '.' delimiters
+      const municipalitySubstring = municipalityParts[municipalityParts.length - 1].trim(); // Select the last part and trim any extra spaces
+
+      let closingEscrows = [];
+
       console.log(`County Millage: ${countyTaxInfo.millageRate}`)
-      console.log(`Yearly county tax due: ${property.countyAssessedValues.this_year.totalValue * (countyTaxInfo.millageRate / 1000)}`)
-      
+      console.log(`County Tax per year: ${property.countyAssessedValues.this_year.totalValue * (countyTaxInfo.millageRate / 1000)}`)
+      console.log(`County Tax per month: ${property.countyAssessedValues.this_year.totalValue * (countyTaxInfo.millageRate / 1000)}`)
+      closingEscrows.push(`${property.countyAssessedValues.this_year.totalValue * (countyTaxInfo.millageRate / 1000).toFixed(2)}`)
 
       for (const record of local_millage_json) {
-        if (record["Municipality"].includes(municipalityMatch)) {
+        if (record["Municipality"].toLowerCase().includes(municipalitySubstring.toLowerCase())) { // Convert both the searched substring and the record's Municipality value to lowercase for case-insensitive matching
           const millage_value = record['Millage'];
           console.log(`Local Millage: ${millage_value}`);
-          console.log(`Yearly local tax due: ${property.countyAssessedValues.this_year.totalValue * (millage_value / 1000)}`)
-          console.log(`Monthly local tax due: ${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12)}`)
+          console.log(`Local Tax per year: ${property.countyAssessedValues.this_year.totalValue * (millage_value / 1000)}`)
+          console.log(`Local Tax per month: ${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12)}`)
+          closingEscrows.push(`${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12).toFixed(2)}`)
           break;
         }
       }
       for (const record of school_millage_json) {
-        if (record["Municipality"].includes(municipalityMatch)) {
+        if (record["Municipality"].toLowerCase().includes(municipalitySubstring.toLowerCase())) { // Convert both the searched substring and the record's Municipality value to lowercase for case-insensitive matching
           const millage_value = record['Millage'];
           console.log(`School Millage: ${millage_value}`);
-          console.log(`Yearly school tax due: ${property.countyAssessedValues.this_year.totalValue * (millage_value / 1000)}`)
-          console.log(`Monthly school tax due: ${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12)}`)
+          console.log(`School Tax per year: ${property.countyAssessedValues.this_year.totalValue * (millage_value / 1000)}`)
+          console.log(`School Tax per month: ${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12)}`)
+          closingEscrows.push(`${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12).toFixed(2)}`)
           break;
         }
       }
-
+      // check escrows? let escrow = (County Per Year + Local PY + School PY) * 1.5 
+      closingEscrows = closingEscrows.map((value) => parseFloat(value));
+      console.log(closingEscrows)
       // TODO
       //Display both yearly and monthly taxes due for each property tax
       // Property Tax = Assessed Value x (Millage Rate / 1000)
