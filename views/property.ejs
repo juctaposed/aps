@@ -2,7 +2,7 @@
 
 
 <!-- Tailwind CSS v2.0+ layout -->
-<div class="container overflow-hidden bg-white shadow sm:rounded-lg">
+<div class="pb-11 container overflow-hidden bg-white shadow sm:rounded-lg m-auto">
   <div class="property-container">
     <div class="px-4 py-5 sm:px-6">
       <h3 class="text-lg font-medium leading-6 text-gray-500" style="text-align: center;">Property Information for</h3>      <p class="mt-1 max-w-2xl text-sm text-gray-500"></p>
@@ -46,22 +46,22 @@
       
       
     </dl>
-    <div class="additional-details">
-      </br> <label for="my-modal-4" class="btn modal-button">Request Features</label>
-      <input type="checkbox" id="my-modal-4" class="modal-toggle" />
-      <label for="my-modal-4" class="modal cursor-pointer">
+    <div class="additional-details pt-8">
+      <label for="features-btn" class="btn modal-button ml-5">Request Features</label>
+      <input type="checkbox" id="features-btn" class="modal-toggle" />
+      <label for="features-btn" class="modal cursor-pointer">
       <label class="modal-box relative" for="">
         <h3 class="text-lg font-bold">Request Additional Features</h3>
         <p class="py-4">Reach out to our team if you would like to request custom reports for specific property information</p>
-        <a href="/contact" class="py-4 fas fa-envelope me-5 text-secondary"> Contact Us</a>
+        <a href="/contact" class="py-4 fas fa-envelope me-5 text-secondary">Contact Us</a>
       </label>
       </label>
 
 
-      <label for="my-modal-5" class="btn btn-outline">Building Info</label>
-      <input type="checkbox" id="my-modal-5" class="modal-toggle" />
+      <label for="building-btn" class="btn btn-outline m-4">Building Info</label>
+      <input type="checkbox" id="building-btn" class="modal-toggle" />
       <!-- Building Info Modal -->
-      <label for="my-modal-5" class="modal cursor-pointer">
+      <label for="building-btn" class="modal cursor-pointer">
         <label class="modal-box relative" for="">
           <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Use Type</dt>
@@ -127,9 +127,9 @@
       </label>
             
             
-            <label for="my-modal-6" class="btn btn-outline">Tax Info</label>
-            <input type="checkbox" id="my-modal-6" class="modal-toggle" />
-            <label for="my-modal-6" class="modal cursor-pointer">
+            <label for="tax-btn" class="btn btn-outline">Tax Info</label>
+            <input type="checkbox" id="tax-btn" class="modal-toggle" />
+            <label for="tax-btn" class="modal cursor-pointer">
               <label class="modal-box relative" for="">
                 <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">Tax Bill Address</dt>
@@ -150,9 +150,9 @@
               </label>
             </label>
             
-            <label for="my-modal-7" class="btn btn-outline">Owner Info</label>
-            <input type="checkbox" id="my-modal-7" class="modal-toggle" />
-            <label for="my-modal-7" class="modal cursor-pointer">
+            <label for="owner-btn" class="btn btn-outline m-4">Owner Info</label>
+            <input type="checkbox" id="owner-btn" class="modal-toggle" />
+            <label for="owner-btn" class="modal cursor-pointer">
               <label class="modal-box relative" for="">
                 <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">Deed Book</dt>
@@ -241,7 +241,7 @@
             </label>
           </label>
     <!-- Market values stat table -->
-    <div class="stats stats-horizontal lg:flex-row flex-col shadow">
+    <div class="stats stats-horizontal lg:flex-row flex-col shadow py-11">
       <div class="stat">
               <div class="land-market pt-2">Land Market Value</div>
               <div class="stat-value">$<%= property.fullMarketValues.this_year.landValue.toLocaleString({ maximumFractionDigits: 2 }) %>
@@ -260,7 +260,7 @@
             </div>
           </div>
           <!-- Assessed values stat table -->
-          <div class="stats stats-horizontal lg:stats-horizontal shadow">
+          <div class="stats stats-horizontal lg:stats-horizontal shadow pb-11">
             <div class="stat">
               <div class="land-assessed pt-2">Land Assessed Value</div>
               <div class="stat-value">$<%= property.countyAssessedValues.this_year.landValue.toLocaleString({ maximumFractionDigits: 2 }) %></div>
