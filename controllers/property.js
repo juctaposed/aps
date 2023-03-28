@@ -48,15 +48,7 @@ module.exports  = {
             res.status(500).send("Internal Server Error");
           }
           
-          // if (!result.address) {
-          //   return res.render("property", {
-          //     property: null,
-          //     building: null,
-          //     countyTax: null,
-          //     comps: null,
-          //   });
-          // }
-
+          
           // Format "showing property detail for" address
           let formattedAddress = property.address.toLowerCase() // Convert to lowercase
             .replace(/\b[a-z]/g, (letter) => letter.toUpperCase()) // Capitalize the first letter of each word
@@ -198,7 +190,7 @@ module.exports  = {
 
       console.log(`County Millage: ${countyTaxInfo.millageRate}`)
       console.log(`County Tax per year: ${property.countyAssessedValues.this_year.totalValue * (countyTaxInfo.millageRate / 1000)}`)
-      console.log(`County Tax per month: ${property.countyAssessedValues.this_year.totalValue * (countyTaxInfo.millageRate / 1000)}`)
+      console.log(`County Tax per month: ${property.countyAssessedValues.this_year.totalValue * (countyTaxInfo.millageRate / 1000) / 12}`)
       closingEscrows.push(`${property.countyAssessedValues.this_year.totalValue * (countyTaxInfo.millageRate / 1000)}`)
 
       for (const record of local_millage_json) {
@@ -207,7 +199,7 @@ module.exports  = {
           console.log(`Local Millage: ${millage_value}`);
           console.log(`Local Tax per year: ${property.countyAssessedValues.this_year.totalValue * (millage_value / 1000)}`)
           console.log(`Local Tax per month: ${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12)}`)
-          closingEscrows.push(`${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12)}`)
+          closingEscrows.push(`${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000))}`)
           break;
         }
       }
@@ -217,16 +209,18 @@ module.exports  = {
           console.log(`School Millage: ${millage_value}`);
           console.log(`School Tax per year: ${property.countyAssessedValues.this_year.totalValue * (millage_value / 1000)}`)
           console.log(`School Tax per month: ${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12)}`)
-          closingEscrows.push(`${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12)}`)
+          closingEscrows.push(`${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000))}`)
           break;
         }
       }
 
       closingEscrows = closingEscrows.map((value) => parseFloat(value));
       console.log(closingEscrows)
+
       const totalEscrow = closingEscrows.map(num => parseFloat(num.toFixed(2))).reduce((acc, current) => acc + current, 0)
-      console.log('Total escrow $', totalEscrow)
-      console.log('Total escrow with 150% buffer $', totalEscrow * 1.5)
+      const totalEscrowWithBuffer = totalEscrow * 1.5
+      console.log('Closing tax escrows $', totalEscrow)
+      console.log('Closing tax escrows with 150% buffer $', totalEscrowWithBuffer)
 
       res.render("property");
     })
