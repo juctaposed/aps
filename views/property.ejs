@@ -136,11 +136,11 @@
                   <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><%= countyTax.taxBillAddr %></dd>
                 </div>
                 <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt class="text-sm font-medium text-gray-500">Net Tax Due This Month</dt>
+                  <dt class="text-sm font-medium text-gray-500">Net County Tax Due @ Discount (3/31/23) </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= countyTax.netTaxDueThisMonth.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
                 </div>
                 <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt class="text-sm font-medium text-gray-500">Gross Tax Due Next Month</dt>
+                  <dt class="text-sm font-medium text-gray-500">Gross County Tax Due @ Face (4/30/23) </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$<%= countyTax.grossTaxDueNextMonth.toLocaleString({ maximumFractionDigits: 2 }) %></dd>
                 </div>
                 <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -241,43 +241,41 @@
             </label>
           </label>
     <!-- Market values stat table -->
-    <div class="stats stats-horizontal lg:flex-row flex-col shadow py-11">
-      <div class="stat">
-              <div class="land-market pt-2">Land Market Value</div>
-              <div class="stat-value">$<%= property.fullMarketValues.this_year.landValue.toLocaleString({ maximumFractionDigits: 2 }) %>
-              </div>
-              <div class="stat-desc">2023</div>
-            </div>
-            <div class="stat">
-              <div class="bldg-market pt-2">Building Market Value</div>
-              <div class="stat-value">$<%= property.fullMarketValues.this_year.buildingValue.toLocaleString({ maximumFractionDigits: 2 }) %></div>
-              <div class="stat-desc">2023</div>
-            </div>
-            <div class="stat">
-              <div class="total-market pt-2">Total Market Value</div>
-              <div class="stat-value text-secondary">$<%= property.fullMarketValues.this_year.totalValue.toLocaleString({ maximumFractionDigits: 2 }) %></div>
-              <div class="stat-desc text-secondary">2023</div>
-            </div>
-          </div>
-          <!-- Assessed values stat table -->
-          <div class="stats stats-horizontal lg:stats-horizontal shadow pb-11">
-            <div class="stat">
-              <div class="land-assessed pt-2">Land Assessed Value</div>
-              <div class="stat-value">$<%= property.countyAssessedValues.this_year.landValue.toLocaleString({ maximumFractionDigits: 2 }) %></div>
-              <div class="stat-desc">2023</div>
-            </div>
-            <div class="stat">
-              <div class="bldg-assessed pt-2">Building Assessed Value</div>
-              <div class="stat-value">$<%= property.countyAssessedValues.this_year.buildingValue.toLocaleString({ maximumFractionDigits: 2 }) %></div>
-              <div class="stat-desc">2023</div>
-            </div>
-            <div class="stat">
-              <div class="total-assessed pt-2">Total Assessed Value</div>
-              <div class="stat-value text-secondary">$<%= property.countyAssessedValues.this_year.totalValue.toLocaleString({ maximumFractionDigits: 2 }) %></div>
-              <div class="stat-desc text-secondary">2023</div>
-            </div>
-          </div>
-        </div>
+    <div class="stats stats-horizontal lg:flex-row flex-col shadow-lg rounded-lg overflow-hidden py-11">
+      <div class="stat bg-gray-100 dark:bg-gray-800 p-6">
+        <div class="land-assessed font-bold text-xl mb-2 text-black text-outline-2">Land Market Value</div>
+        <div class="stat-value font-bold text-3xl">$<%= property.fullMarketValues.this_year.landValue.toLocaleString({ maximumFractionDigits: 2 }) %></div>
+        <div class="stat-desc text-gray-500 dark:text-gray-400">2023</div>
       </div>
+      <div class="stat bg-gray-100 dark:bg-gray-800 p-6">
+        <div class="bldg-market font-bold text-xl mb-2">Building Market Value</div>
+        <div class="stat-value font-bold text-3xl">$<%= property.fullMarketValues.this_year.buildingValue.toLocaleString({ maximumFractionDigits: 2 }) %></div>
+        <div class="stat-desc text-gray-500 dark:text-gray-400">2023</div>
+      </div>
+      <div class="stat bg-gray-100 dark:bg-gray-800 p-6">
+        <div class="total-market font-bold text-xl mb-2 text-yellow-400">Total Market Value</div>
+        <div class="stat-value font-bold text-3xl text-yellow-400">$<%= property.fullMarketValues.this_year.totalValue.toLocaleString({ maximumFractionDigits: 2 }) %></div>
+        <div class="stat-desc">2023</div>
+      </div>
+    </div>
+    <!-- Assessed values stat table -->
+    <div class="stats stats-horizontal lg:flex-row flex-col shadow-lg rounded-lg overflow-hidden py-11">
+      <div class="stat bg-gray-100 dark:bg-gray-800 p-6">
+        <div class="land-assessed font-bold text-xl mb-2 text-black text-outline-2">Land Assessed Value</div>
+        <div class="stat-value font-bold text-3xl">$<%= property.countyAssessedValues.this_year.landValue.toLocaleString({ maximumFractionDigits: 2 }) %></div>
+        <div class="stat-desc text-gray-500 dark:text-gray-400">2023</div>
+      </div>
+      <div class="stat bg-gray-100 dark:bg-gray-800 p-6">
+        <div class="bldg-assessed font-bold text-xl mb-2">Building Assessed Value</div>
+        <div class="stat-value font-bold text-3xl">$<%= property.countyAssessedValues.this_year.buildingValue.toLocaleString({ maximumFractionDigits: 2 }) %></div>
+        <div class="stat-desc text-gray-500 dark:text-gray-400">2023</div>
+      </div>
+      <div class="stat bg-gray-100 dark:bg-gray-800 p-6">
+        <div class="total-assessed font-bold text-xl mb-2 text-yellow-400">Total Assessed Value</div>
+        <div class="stat-value font-bold text-3xl text-yellow-400">$<%= property.countyAssessedValues.this_year.totalValue.toLocaleString({ maximumFractionDigits: 2 }) %></div>
+        <div class="stat-desc">2023</div>
+      </div>
+</div>
+
         
 <%- include('partials/footer') -%>
