@@ -1,8 +1,8 @@
 const PropertyModel = require("../models/Property");
 const BuildingModel = require("../models/Building");
-const CountyTaxModel = require("../models/CountyTax")
-const CompsModel = require("../models/Comp")
-const OwnerModel = require("../models/Owner")
+const CountyTaxModel = require("../models/CountyTax");
+const CompsModel = require("../models/Comp");
+const OwnerModel = require("../models/Owner");
 const acreApi = require('acre-api');
 const local_millage_json = require("../data/localTax2022.json");
 const school_millage_json = require("../data/schoolTax2022.json");
@@ -12,7 +12,7 @@ module.exports  = {
   searchProperty: async (req, res) => {
     const input = {
       streetNum: Number(req.body.streetNum), 
-      street: req.body.street.trim()
+      street: req.body.street.trim(),
     }
     try {
       console.log(req.body)
@@ -48,7 +48,6 @@ module.exports  = {
             res.status(500).send("Internal Server Error");
           }
           
-          
           // Format "showing property detail for" address
           let formattedAddress = property.address.toLowerCase() // Convert to lowercase
             .replace(/\b[a-z]/g, (letter) => letter.toUpperCase()) // Capitalize the first letter of each word
@@ -56,8 +55,6 @@ module.exports  = {
           formattedAddress = formattedAddress.replace(/(\d+)\s+(.+),/, (match, number, street) =>
             `${number} ${street.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')},`
           );
-
-          console.log("formatted address: ", formattedAddress); 
           res.locals.formattedAddress = formattedAddress;
         }
         
@@ -124,14 +121,25 @@ module.exports  = {
         dateSearched: req.body.id, 
         searchedBy: req.user.id,
       });
-      res.locals.countyTax = countyTaxRecord;
       
+      const taxData = [];
       for (const year in countyTaxInfo.taxHistory) {
         if (countyTaxInfo.taxHistory.hasOwnProperty(year)) {
           await CountyTaxModel.updateOne(countyTaxInfo.taxHistory[year])
           console.log(year, countyTaxInfo.taxHistory[year]);
+          const yearTax = countyTaxInfo.taxHistory[year].tax;
+          const paidStatus = countyTaxInfo.taxHistory[year].paidStatus;
+          const penalty = countyTaxInfo.taxHistory[year].penalty;
+          const interest = countyTaxInfo.taxHistory[year].interest;
+          const datePaid = countyTaxInfo.taxHistory[year].datePaid;
+          const total = countyTaxInfo.taxHistory[year].total;
+          taxData.push({ year, yearTax, paidStatus, penalty, interest, datePaid, total });
         }
       }
+      //## TODO 
+      // do same with other taxHistory key/values? this atleast displays in EJS
+      res.locals.countyTax = countyTaxRecord;
+      res.locals.taxData = taxData
       
       console.log('county tax info: ', countyTaxRecord)
       console.log('tax history: ', countyTaxInfo.taxHistory)
@@ -146,8 +154,7 @@ module.exports  = {
         dateSearched: req.body.id
       });
       res.locals.comps = compsRecord;
-      console.log('comparable parcels : ', compsRecord)
-      
+      // console.log('comparable parcels : ', compsRecord)
       for (const property in compsInfo.comps) {
         if (compsInfo.comps.hasOwnProperty(property)) {
           console.log(property, compsInfo.comps[property]);
@@ -159,7 +166,6 @@ module.exports  = {
           ownerInfo[key] = 'N/A';
         }
       }
-
       const ownerRecord = await OwnerModel.create({
         parcelId: ownerInfo.parcelId,
         municipality: ownerInfo.municipality,

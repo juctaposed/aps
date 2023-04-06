@@ -149,6 +149,42 @@
                 </div>
               </label>
             </label>
+
+            <label for="tax-history-btn" class="btn btn-outline">Tax History</label>
+            <input type="checkbox" id="tax-history-btn" class="modal-toggle" />
+            <label for="tax-history-btn" class="modal cursor-pointer">
+              <label class="modal-box relative" id ="tax-hist-modal" for="">
+                <table class="table-auto">
+                  <thead>
+                    <tr>
+                      <th class="px-2 py-2">Year</th>
+                      <th class="px-2 py-2">Amount Due</th>
+                      <th class="px-2 py-2">Paid Status</th>
+                      <th class="px-2 py-2">Penalty</th>
+                      <th class="px-2 py-2">Interest</th>
+                      <th class="px-2 py-2">Total</th>
+                      <th class="px-2 py-2">Paid on</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% taxData.forEach(tax => { %>
+                      <tr>
+                        <td class="border px-3 py-2 text-center"><%= tax.year %></td>
+                        <td class="border px-3 py-2 text-center"><%= tax.yearTax %></td>
+                        <td class="border px-3 py-2 text-center"><%= tax.paidStatus %></td>
+                        <td class="border px-3 py-2 text-center"><%= tax.penalty %></td>
+                        <td class="border px-3 py-2 text-center"><%= tax.interest %></td>
+                        <td class="border px-3 py-2 text-center"><%= tax.total %></td>
+                        <td class="border px-3 py-2 text-center"><%= tax.datePaid %></td>
+                      </tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+                
+                
+
+              </label>
+            </label>
             
             <label for="owner-btn" class="btn btn-outline m-4">Owner Info</label>
             <input type="checkbox" id="owner-btn" class="modal-toggle" />
