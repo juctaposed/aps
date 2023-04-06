@@ -169,13 +169,14 @@
                   <tbody>
                     <% taxData.forEach(tax => { %>
                       <tr>
-                        <td class="border px-3 py-2 text-center"><%= tax.year %></td>
-                        <td class="border px-3 py-2 text-center"><%= tax.yearTax %></td>
-                        <td class="border px-3 py-2 text-center"><%= tax.paidStatus %></td>
-                        <td class="border px-3 py-2 text-center"><%= tax.penalty %></td>
-                        <td class="border px-3 py-2 text-center"><%= tax.interest %></td>
-                        <td class="border px-3 py-2 text-center"><%= tax.total %></td>
-                        <td class="border px-3 py-2 text-center"><%= tax.datePaid %></td>
+                        <td class="border px-3 py-2 text-center"><%= tax.year || 'N/A' %></td>
+                        <td class="border px-3 py-2 text-center"><%= tax.yearTax || 'N/A' %></td>
+                        <td class="border px-3 py-2 text-center"><%= tax.paidStatus || 'N/A' %></td>
+                        <td class="border px-3 py-2 text-center"><%= tax.penalty || 0 %></td>
+                        <td class="border px-3 py-2 text-center"><%= tax.interest || 0 %></td>
+                        <td class="border px-3 py-2 text-center"><%= tax.total || 'N/A' %></td>
+                        <td class="border px-3 py-2 text-center"><%= tax.datePaid || 'N/A' %></td>
+
                       </tr>
                     <% }); %>
                   </tbody>
