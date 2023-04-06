@@ -227,7 +227,7 @@
 
             <label for="comparable-properties" class="btn btn-outline">Comparable Properties</label>
             <input type="checkbox" id="comparable-properties" class="modal-toggle" />
-            <label for="comparable-properties" class="modal cursor-pointer">
+            <label for="comparable-properties" class="modal">
               <div class="modal-box relative">
                   <!-- Loop thru Comps -->
                     <ul>
@@ -236,8 +236,8 @@
 
                       <% for (let i = 0; i < comps.comps.length; i++) { %>
                         <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                          <dt class="text-sm font-medium text-gray-500"><strong>Address</strong></dt>
-                          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><strong><%= comps.comps[i].address %></strong></dd>
+                          <dt class="text-sm font-medium text-gray-500"><strong>Address</strong></dt> 
+                          <button class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0 address-btn" onclick="event.preventDefault(); fetch('/property/comps', { method: 'POST', body: JSON.stringify({ address: '<%= comps.comps[i].address %>' }), headers: { 'Content-Type': 'application/json' } }).then(res => res.json()).then(data => console.log(data))"><strong><%= comps.comps[i].address %></strong></button>
                         </div>
                         <div class="bg-white-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                           <dt class="text-sm font-medium text-gray-500">Year Built</dt>
