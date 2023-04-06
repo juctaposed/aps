@@ -205,3 +205,28 @@ btn btn-outline {
     -1px 1px 0 #000,
      1px 1px 0 #000;
 }
+
+
+/* 
+@media (max-width: 640px) {
+  .stats {
+    flex-direction: column;
+  }
+
+  .stat {
+    margin-bottom: 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .stat-desc {
+    font-size: 0.875rem;
+  }
+  
+} */
+
+#tax-hist-modal {
+  max-width: 620px;
+}
