@@ -235,16 +235,19 @@ module.exports  = {
       console.log(err)
     }
   },
-  compProperty: async(req, res, address) => {
+  compProperty: async(req, res) => {
   // Attach click event listener to all elements with class 'address-btn'
-      const fullAddress = req.body.address
-      const aoa_data = fullAddress.split(' ').map(str => str.trim());
-      const filterStreet = aoa_data.map(([first, second]) => [first, second]);
+    const fullAddress = req.body.address;
+    const filterStreet = fullAddress.split(' ').map(str => str.trim());
+    const streetNumber = Number(filterStreet[0]);
+    const streetName = filterStreet.slice(1).filter((str, index) => index === 0).join(' ');
+  
+
       // Call your formula with the extracted data here
-      console.log(filterStreet.first, filterStreet.second)
+      console.log(streetNumber, streetName)
       try {
         console.log(req.body)
-        acreApi.search(filterStreet.first, filterStreet.second, async function(err, property) {
+        acreApi.search(streetNumber, streetName, async function(err, property) {
           if(err) {
             return err 
           } else {
