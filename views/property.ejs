@@ -261,13 +261,12 @@
             <input type="checkbox" id="comparable-properties" class="modal-toggle" />
             <label for="comparable-properties" class="modal">
               <div class="modal-box relative">
-                  <!-- Loop thru Comps -->
-                    <ul>
-                      <!-- TODO -->
-                      <!-- Finishg writing a check if there are no comparables, nothing is currently displaying in modal -->
-
-                      <% for (let i = 0; i < comps.comps.length; i++) { %>
-                        <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <% if (comps.comps.length === 0) { %>
+                <p>No Comparable Properties Available</p>
+                <% } else { %>
+                  <ul>
+                    <% for (let i = 0; i < comps.comps.length; i++) { %>
+                      <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                           <dt class="text-sm font-medium text-gray-500"><strong>Address</strong></dt> 
                           <button class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0 address-btn" onclick="event.preventDefault(); fetch('/property/comps', { method: 'POST', body: JSON.stringify({ address: '<%= comps.comps[i].address %>' }), headers: { 'Content-Type': 'application/json' } }).then(res => res.json()).then(data => compProperty(data))"><strong><%= comps.comps[i].address %></strong></button>
                         </div>
@@ -306,7 +305,8 @@
                       </br>
                       <% }; %>
                     </ul>
-              </div>
+                    <% }; %>
+                  </div>
             </label>
           </label>
     <!-- Market values stat table -->
