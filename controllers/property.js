@@ -200,23 +200,25 @@ module.exports  = {
       console.log(`County Tax per month: ${property.countyAssessedValues.this_year.totalValue * (countyTaxInfo.millageRate / 1000) / 12}`)
       closingEscrows.push(`${property.countyAssessedValues.this_year.totalValue * (countyTaxInfo.millageRate / 1000)}`)
 
+      let local_millage_value;
       for (const record of local_millage_json) {
         if (record["Municipality"].toLowerCase().includes(municipalitySubstring.toLowerCase())) { // Convert both the searched substring and the record's Municipality value to lowercase for case-insensitive matching
-          const millage_value = record['Millage'];
-          console.log(`Local Millage: ${millage_value}`);
-          console.log(`Local Tax per year: ${property.countyAssessedValues.this_year.totalValue * (millage_value / 1000)}`)
-          console.log(`Local Tax per month: ${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12)}`)
-          closingEscrows.push(`${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000))}`)
+          local_millage_value = record['Millage'];
+          console.log(`Local Millage: ${local_millage_value}`);
+          console.log(`Local Tax per year: ${property.countyAssessedValues.this_year.totalValue * (local_millage_value / 1000)}`)
+          console.log(`Local Tax per month: ${(property.countyAssessedValues.this_year.totalValue * (local_millage_value / 1000) / 12)}`)
+          closingEscrows.push(`${(property.countyAssessedValues.this_year.totalValue * (local_millage_value / 1000))}`)
           break;
         }
       }
+      let school_millage_value;
       for (const record of school_millage_json) {
         if (record["Municipality"].toLowerCase().includes(municipalitySubstring.toLowerCase())) { // Convert both the searched substring and the record's Municipality value to lowercase for case-insensitive matching
-          const millage_value = record['Millage'];
-          console.log(`School Millage: ${millage_value}`);
-          console.log(`School Tax per year: ${property.countyAssessedValues.this_year.totalValue * (millage_value / 1000)}`)
-          console.log(`School Tax per month: ${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000) / 12)}`)
-          closingEscrows.push(`${(property.countyAssessedValues.this_year.totalValue * (millage_value / 1000))}`)
+          school_millage_value = record['Millage'];
+          console.log(`School Millage: ${school_millage_value}`);
+          console.log(`School Tax per year: ${property.countyAssessedValues.this_year.totalValue * (school_millage_value / 1000)}`)
+          console.log(`School Tax per month: ${(property.countyAssessedValues.this_year.totalValue * (school_millage_value / 1000) / 12)}`)
+          closingEscrows.push(`${(property.countyAssessedValues.this_year.totalValue * (school_millage_value / 1000))}`)
           break;
         }
       }
@@ -228,6 +230,22 @@ module.exports  = {
       const totalEscrowWithBuffer = totalEscrow * 1.5
       console.log('Closing tax escrows $', totalEscrow)
       console.log('Closing tax escrows with 150% buffer $', totalEscrowWithBuffer)
+// -------
+      const propertyTax = {
+        countyMillage: countyTaxInfo.millageRate,
+        countyTaxPerYear: property.countyAssessedValues.this_year.totalValue * (countyTaxInfo.millageRate / 1000),
+        countyTaxPerMonth: property.countyAssessedValues.this_year.totalValue * (countyTaxInfo.millageRate / 1000) / 12,
+        localMillage: local_millage_value, // set the millage value dynamically based on the loop
+        localTaxPerYear: property.countyAssessedValues.this_year.totalValue * (local_millage_value / 1000), // set the tax per year dynamically based on the loop
+        localTaxPerMonth: property.countyAssessedValues.this_year.totalValue * (local_millage_value / 1000) / 12, // set the tax per month dynamically based on the loop
+        schoolMillage: school_millage_value, // set the millage value dynamically based on the loop
+        schoolTaxPerYear: property.countyAssessedValues.this_year.totalValue * (school_millage_value / 1000), // set the tax per year dynamically based on the loop
+        schoolTaxPerMonth: property.countyAssessedValues.this_year.totalValue * (school_millage_value / 1000) / 12, // set the tax per month dynamically based on the loop
+        closingEscrows: closingEscrows.map(num => parseFloat(num.toFixed(2))),
+        totalEscrow: totalEscrow,
+        totalEscrowWithBuffer: totalEscrowWithBuffer
+      };
+      res.locals.propertyTax = propertyTax
 
       res.render("property");
     })
@@ -241,9 +259,6 @@ module.exports  = {
     const filterStreet = fullAddress.split(' ').map(str => str.trim());
     const streetNumber = Number(filterStreet[0]);
     const streetName = filterStreet.slice(1).filter((str, index) => index === 0).join(' ');
-  
-
-      // Call your formula with the extracted data here
       console.log(streetNumber, streetName)
       try {
         console.log(req.body)
@@ -367,8 +382,6 @@ module.exports  = {
             taxData.push({ year, yearTax, paidStatus, penalty, interest, datePaid, total });
           }
         }
-        //## TODO 
-        // do same with other taxHistory key/values? this atleast displays in EJS
         res.locals.countyTax = countyTaxRecord;
         res.locals.taxData = taxData
         
@@ -460,30 +473,45 @@ module.exports  = {
         console.log('Closing tax escrows $', totalEscrow)
         console.log('Closing tax escrows with 150% buffer $', totalEscrowWithBuffer)
   
-        res.render('property');
+        res.render('comps');
       })
       } catch (err) {
         console.log(err)
   };
-
-//     // label 1-2-3-4
-//     // pull address of comparable parcel on click -> acreApi.search(0, 1, async function(err, property) {...}
-//     // push addresses to array? splitNumAndName array -> search
-// // //property-uno
-// // console.log(splitNumAndName(compAddresses)[0][0])
-// // console.log(splitNumAndName(compAddresses)[0][1])
-// // onclick acreApi.search(0, 1, async function(err, property)
-// // //property-dose 
-// // console.log(splitNumAndName(compAddresses)[1][0])
-// // console.log(splitNumAndName(compAddresses)[1][1])
-// // //property-tres
-// // console.log(splitNumAndName(compAddresses)[2][0])
-// // console.log(splitNumAndName(compAddresses)[2][1])
-// // //property-quatro
-// // console.log(splitNumAndName(compAddresses)[3][0])
-// // console.log(splitNumAndName(compAddresses)[3][1])
-// // //property-cinco
-// // console.log(splitNumAndName(compAddresses)[4][0])
-// // console.log(splitNumAndName(compAddresses)[4][1])
+  }, 
+  getProperty: async (req, res) => {
+    try {
+      // Retrieve the latest property record from the database
+      const latestProperty = await PropertyModel.findOne().sort({ _id: -1 });
+      let formattedAddress = latestProperty.address.toLowerCase() // Convert to lowercase
+              .replace(/\b[a-z]/g, (letter) => letter.toUpperCase()) // Capitalize the first letter of each word
+              .replace(/(\d+)\s+(.+),\s+([a-z]{2})\s+(\d{5})/i, (match, number, street, state, zip) => `${number} ${street.trim().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} ${state.toUpperCase()}, ${zip}`); // Swap the state and zip code, and add a comma between the city and state
+              formattedAddress = formattedAddress.replace(/(\d+)\s+(.+),/, (match, number, street) =>
+              `${number} ${street.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')},`
+            );
+      const latestBuilding = await BuildingModel.findOne().sort({ _id: -1 });
+      const latestTax = await CountyTaxModel.findOne().sort({ _id: -1 });
+      const taxData = [];
+      if (latestTax && latestTax.taxHistory) {
+        for (const year in latestTax.taxHistory) {
+          if (latestTax.taxHistory.hasOwnProperty(year)) {
+            const yearTax = latestTax.taxHistory[year].tax;
+            const paidStatus = latestTax.taxHistory[year].paidStatus;
+            const penalty = latestTax.taxHistory[year].penalty;
+            const interest = latestTax.taxHistory[year].interest;
+            const datePaid = latestTax.taxHistory[year].datePaid;
+            const total = latestTax.taxHistory[year].total;
+            taxData.push({ year, yearTax, paidStatus, penalty, interest, datePaid, total });
+          }
+        }
+      }
+      const latestOwner = await OwnerModel.findOne().sort({ _id: -1 });
+      const latestComps = await CompsModel.findOne().sort({ _id: -1 });
+      // Render the property page with the latest property record
+      res.render("comps", { property: latestProperty, formattedAddress: formattedAddress, building: latestBuilding, countyTax: latestTax, taxData: taxData, owner: latestOwner, comps: latestComps });
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Internal Server Error");
+    }
   }
 }
