@@ -4,36 +4,33 @@ const mongoose = require("mongoose");
 const UserSchema = new mongoose.Schema({
   userName: { type: String, unique: true },
   email: { type: String, unique: true },
-  password: String,
+  password: { type: String },
   googleId: {
-    type: String,
-    required: true
-},
-displayName: {
-    type: String,
-    required: true
-},
-firstName: {
-    type: String,
-    required: true
-},
-lastName: {
-    type: String,
-    required: false
-},
-image: {
     type: String
-},
-createdAt: {
-    type: Date,
-    default: Date.now
-}
+  },
+  displayName: {
+      type: String
+  },
+  firstName: {
+      type: String
+  },
+  lastName: {
+      type: String
+  },
+  image: {
+      type: String
+  },
+  createdAt: {
+      type: Date, 
+      default: Date.now
+  }
 });
 
 // Password hash middleware.
 
 UserSchema.pre("save", function save(next) {
   const user = this;
+  console.log(user)
   if (!user.isModified("password")) {
     return next();
   }

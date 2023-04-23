@@ -13,6 +13,7 @@ exports.getLogin = (req, res) => {
 
 // Local auth
 exports.postLogin = (req, res, next) => {
+  console.log(req.body.email)
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))
     validationErrors.push({ msg: "Please enter a valid email address." });
@@ -27,6 +28,7 @@ exports.postLogin = (req, res, next) => {
     gmail_remove_dots: false,
   });
 
+  console.log(req.user)
   passport.authenticate("local", (err, user, info) => {
     if (err) {
       return next(err);
@@ -67,6 +69,7 @@ exports.getSignup = (req, res) => {
 };
 
 exports.postSignup = (req, res, next) => {
+  console.log(req.body)
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))
     validationErrors.push({ msg: "Please enter a valid email address." });
@@ -105,8 +108,11 @@ exports.postSignup = (req, res, next) => {
       }
       user.save((err) => {
         if (err) {
+          console.log(err)
           return next(err);
         }
+        console.log("Response Body:", res);
+        console.log("User saved:", user);
         req.logIn(user, (err) => {
           if (err) {
             return next(err);
